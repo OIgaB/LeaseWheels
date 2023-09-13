@@ -1,0 +1,418 @@
+@font-face {
+  font-family: "Manrope-Regular";
+  font-style: normal;
+  font-weight: normal;
+  src: url("../../fonts/Manrope-Regular.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Manrope-Medium";
+  font-style: normal;
+  font-weight: 500;
+  src: url("../../fonts/Manrope-Medium.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Manrope-SemiBold";
+  font-style: normal;
+  font-weight: 600;
+  src: url("../../fonts/Manrope-SemiBold.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Montserrat-Regular";
+  font-style: normal;
+  font-weight: normal;
+  src: url("../../fonts/Montserrat-Regular.woff2") format("woff2");
+}
+:root {
+  --bgWelcome: linear-gradient(
+    180deg,
+    rgba(196, 196, 196, 0) 25%,
+    #bedbb0 92.19%
+  );
+  --secondaryText: rgba(255, 255, 255, 0.3);
+  --accent: #bedbb0;
+  --accentHover: #9dc888;
+  --bgWelcomeCard: #151515;
+  --bgOverlay: rgba(21, 21, 21, 0.3);
+  --labelPink: #e09cb5;
+  --labelBlue: #8fa1d0;
+}
+
+[data-theme=dark] {
+  --bgSidebar: #121212;
+  --bgHeader: #161616;
+  --bgMain: #1f1f1f;
+  --bgHelp: #1f1f1f;
+  --bgCard: #121212;
+  --primary: #ffffff;
+  --secondary: rgba(255, 255, 255, 0.3);
+  --accent: #bedbb0;
+  --accentHover: #9dc888;
+  --btnPlus: #bedbb0;
+  --btnPlusHover: #9dc888;
+  --scroll: #121212;
+  --bgScroll: #ffffff;
+  --borderTheme: #bedbb0;
+  --textThemeMenu: rgba(255, 255, 255, 0.5);
+  --bgModal: #151515;
+  --modalTitle: #ffffff;
+  --modalBtnText: #161616;
+  --iconPlus: rgba(255, 255, 255, 1);
+  --colorFilters: rgba(255, 255, 255, 0.8);
+  --iconsCard: rgba(255, 255, 255, 0.5);
+  --bgIconPlus: #ffffff;
+  --bgIconPlusCard: #ffffff;
+  --bgSbTitleBoard: #1f1f1f;
+  --inputBorder: rgba(190, 219, 176, 0.4);
+  --inputBorderAccent: rgba(190, 219, 176, 1);
+  --modalInputBg: #1f1f1f;
+  --sbSubtitle: #ffffff80;
+  --sbBorderNew: #ffffff1a;
+  --btnAddBoard: #121212;
+  --sbActiveBoard: #1f1f1f;
+  --sbBoardName: rgba(255, 255, 255, 0.5);
+  --sbActiveFlag: #bedbb0;
+  --sbLogoSvg: #1f1f1f;
+  --LogOutSvgHov: #9dc888;
+  --sbBoardSvg: #ffffff80;
+  --popCardBorderColor: rgba(190, 219, 176, 0.5);
+  --popCardInputTextColor: rgba(255, 255, 255, 1);
+  --popCardPlaceHolder: rgba(255, 255, 255, 0.4);
+  --popCardInputBgColor: #1F1F1F;
+  --ModalIconClose: rgba(255, 255, 255, 1);
+  --cardText: rgba(255, 255, 255, 0.5);
+  --cardSeparator: rgba(255, 255, 255, 0.1);
+  --bgScrollModify: rgba(255, 255, 255, 0.08);
+  --bgUserName: #97c77f;
+}
+
+[data-theme=light] {
+  --bgSidebar: #ffffff;
+  --bgHeader: #fcfcfc;
+  --bgMain: #f6f6f7;
+  --bgHelp: #f6f6f7;
+  --bgCard: #ffffff;
+  --primary: #161616;
+  --secondary: rgba(22, 22, 22, 0.7);
+  --accent: #bedbb0;
+  --accentHover: #9dc888;
+  --btnPlus: #bedbb0;
+  --btnPlusHover: #9dc888;
+  --scroll: rgba(22, 22, 22, 0.1);
+  --bgScroll: #e8e8e8;
+  --borderTheme: #bedbb0;
+  --textThemeMenu: #161616;
+  --bgModal: #fcfcfc;
+  --modalTitle: #161616;
+  --modalBtnText: #161616;
+  --iconPlus: rgba(255, 255, 255, 1);
+  --colorFilters: rgba(22, 22, 22, 0.8);
+  --iconsCard: rgba(22, 22, 22, 0.5);
+  --bgIconPlus: #161616;
+  --bgIconPlusCard: #ffffff;
+  --bgSbTitleBoard: #f6f6f7;
+  --inputBorder: rgba(190, 219, 176, 0.4);
+  --inputBorderAccent: rgba(190, 219, 176, 1);
+  --modalInputBg: #fcfcfc;
+  --sbSubtitle: #16161680;
+  --sbBorderNew: #1616161a;
+  --btnAddBoard: #121212;
+  --sbActiveBoard: #f6f6f7;
+  --sbBoardName: rgba(22, 22, 22, 0.5);
+  --sbActiveFlag: #bedbb0;
+  --sbLogoSvg: #1f1f1f;
+  --LogOutSvgHov: #9dc888;
+  --sbBoardSvg: #16161680;
+  --popCardBorderColor: none;
+  --cardText: rgba(22, 22, 22, 0.7);
+  --popCardInputTextColor: rgba(22, 22, 22, 1);
+  --popCardPlaceHolder: rgba(22, 22, 22, 0.4);
+  --popCardInputBgColor: #FFFFFF;
+  --ModalIconClose: rgba(22, 22, 22, 1);
+  --cardSeparator: rgba(22, 22, 22, 0.1);
+  --bgScrollModify: #e8e8e8;
+  --bgUserName: #97c77f;
+}
+
+[data-theme=violet] {
+  --bgSidebar: #5255bc;
+  --bgHeader: #ffffff;
+  --bgMain: #ecedfd;
+  --bgHelp: rgba(236, 237, 253, 0.4);
+  --bgCard: #ffffff;
+  --primary: #ffffff;
+  --secondary: rgba(255, 255, 255, 0.5);
+  --accent: #5255bc;
+  --accentHover: #7b7ede;
+  --btnPlus: #b8bcfd;
+  --btnPlusHover: #979cea;
+  --scroll: #b8bcfd;
+  --bgScroll: #ffffff;
+  --borderTheme: #ecedfd;
+  --textThemeMenu: #161616;
+  --bgModal: #fcfcfc;
+  --modalTitle: #161616;
+  --modalBtnText: #ffffff;
+  --iconPlus: rgba(22, 22, 22, 1);
+  --colorFilters: rgba(22, 22, 22, 0.8);
+  --iconsCard: rgba(22, 22, 22, 0.5);
+  --bgIconPlus: #5255bc;
+  --bgIconPlusCard: #161616;
+  --bgSbTitleBoard: rgba(255, 255, 255, 0.5);
+  --inputBorder: rgba(82, 85, 188, 0.4);
+  --inputBorderAccent: rgba(82, 85, 188, 1);
+  --modalInputBg: #fcfcfc;
+  --sbSubtitle: #ffffff80;
+  --sbBorderNew: #ffffff1a;
+  --btnAddBoard: #ffffff;
+  --sbActiveBoard: rgba(255, 255, 255, 0.5);
+  --sbBoardName: rgba(255, 255, 255, 0.5);
+  --sbActiveFlag: #ffffff;
+  --sbLogoSvg: #5255bc;
+  --LogOutSvgHov: #b8bcfd;
+  --sbBoardSvg: #16161680;
+  --popCardBorderColor: none;
+  --cardText: rgba(22, 22, 22, 0.7);
+  --popCardInputTextColor: rgba(22, 22, 22, 1);
+  --popCardPlaceHolder: rgba(22, 22, 22, 0.4);
+  --popCardInputBgColor: #FFFFFF;
+  --ModalIconClose: rgba(22, 22, 22, 1);
+  --cardSeparator: rgba(22, 22, 22, 0.1);
+  --bgScrollModify: #ffffff;
+  --bgUserName: #8b8ee3;
+}
+
+@font-face {
+  font-family: "Manrope-Regular";
+  font-style: normal;
+  font-weight: normal;
+  src: url("../../fonts/Manrope-Regular.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Manrope-Medium";
+  font-style: normal;
+  font-weight: 500;
+  src: url("../../fonts/Manrope-Medium.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Manrope-SemiBold";
+  font-style: normal;
+  font-weight: 600;
+  src: url("../../fonts/Manrope-SemiBold.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Montserrat-Regular";
+  font-style: normal;
+  font-weight: normal;
+  src: url("../../fonts/Montserrat-Regular.woff2") format("woff2");
+}
+:root {
+  --bgWelcome: linear-gradient(
+    180deg,
+    rgba(196, 196, 196, 0) 25%,
+    #bedbb0 92.19%
+  );
+  --secondaryText: rgba(255, 255, 255, 0.3);
+  --accent: #bedbb0;
+  --accentHover: #9dc888;
+  --bgWelcomeCard: #151515;
+  --bgOverlay: rgba(21, 21, 21, 0.3);
+  --labelPink: #e09cb5;
+  --labelBlue: #8fa1d0;
+}
+
+[data-theme=dark] {
+  --bgSidebar: #121212;
+  --bgHeader: #161616;
+  --bgMain: #1f1f1f;
+  --bgHelp: #1f1f1f;
+  --bgCard: #121212;
+  --primary: #ffffff;
+  --secondary: rgba(255, 255, 255, 0.3);
+  --accent: #bedbb0;
+  --accentHover: #9dc888;
+  --btnPlus: #bedbb0;
+  --btnPlusHover: #9dc888;
+  --scroll: #121212;
+  --bgScroll: #ffffff;
+  --borderTheme: #bedbb0;
+  --textThemeMenu: rgba(255, 255, 255, 0.5);
+  --bgModal: #151515;
+  --modalTitle: #ffffff;
+  --modalBtnText: #161616;
+  --iconPlus: rgba(255, 255, 255, 1);
+  --colorFilters: rgba(255, 255, 255, 0.8);
+  --iconsCard: rgba(255, 255, 255, 0.5);
+  --bgIconPlus: #ffffff;
+  --bgIconPlusCard: #ffffff;
+  --bgSbTitleBoard: #1f1f1f;
+  --inputBorder: rgba(190, 219, 176, 0.4);
+  --inputBorderAccent: rgba(190, 219, 176, 1);
+  --modalInputBg: #1f1f1f;
+  --sbSubtitle: #ffffff80;
+  --sbBorderNew: #ffffff1a;
+  --btnAddBoard: #121212;
+  --sbActiveBoard: #1f1f1f;
+  --sbBoardName: rgba(255, 255, 255, 0.5);
+  --sbActiveFlag: #bedbb0;
+  --sbLogoSvg: #1f1f1f;
+  --LogOutSvgHov: #9dc888;
+  --sbBoardSvg: #ffffff80;
+  --popCardBorderColor: rgba(190, 219, 176, 0.5);
+  --popCardInputTextColor: rgba(255, 255, 255, 1);
+  --popCardPlaceHolder: rgba(255, 255, 255, 0.4);
+  --popCardInputBgColor: #1F1F1F;
+  --ModalIconClose: rgba(255, 255, 255, 1);
+  --cardText: rgba(255, 255, 255, 0.5);
+  --cardSeparator: rgba(255, 255, 255, 0.1);
+  --bgScrollModify: rgba(255, 255, 255, 0.08);
+  --bgUserName: #97c77f;
+}
+
+[data-theme=light] {
+  --bgSidebar: #ffffff;
+  --bgHeader: #fcfcfc;
+  --bgMain: #f6f6f7;
+  --bgHelp: #f6f6f7;
+  --bgCard: #ffffff;
+  --primary: #161616;
+  --secondary: rgba(22, 22, 22, 0.7);
+  --accent: #bedbb0;
+  --accentHover: #9dc888;
+  --btnPlus: #bedbb0;
+  --btnPlusHover: #9dc888;
+  --scroll: rgba(22, 22, 22, 0.1);
+  --bgScroll: #e8e8e8;
+  --borderTheme: #bedbb0;
+  --textThemeMenu: #161616;
+  --bgModal: #fcfcfc;
+  --modalTitle: #161616;
+  --modalBtnText: #161616;
+  --iconPlus: rgba(255, 255, 255, 1);
+  --colorFilters: rgba(22, 22, 22, 0.8);
+  --iconsCard: rgba(22, 22, 22, 0.5);
+  --bgIconPlus: #161616;
+  --bgIconPlusCard: #ffffff;
+  --bgSbTitleBoard: #f6f6f7;
+  --inputBorder: rgba(190, 219, 176, 0.4);
+  --inputBorderAccent: rgba(190, 219, 176, 1);
+  --modalInputBg: #fcfcfc;
+  --sbSubtitle: #16161680;
+  --sbBorderNew: #1616161a;
+  --btnAddBoard: #121212;
+  --sbActiveBoard: #f6f6f7;
+  --sbBoardName: rgba(22, 22, 22, 0.5);
+  --sbActiveFlag: #bedbb0;
+  --sbLogoSvg: #1f1f1f;
+  --LogOutSvgHov: #9dc888;
+  --sbBoardSvg: #16161680;
+  --popCardBorderColor: none;
+  --cardText: rgba(22, 22, 22, 0.7);
+  --popCardInputTextColor: rgba(22, 22, 22, 1);
+  --popCardPlaceHolder: rgba(22, 22, 22, 0.4);
+  --popCardInputBgColor: #FFFFFF;
+  --ModalIconClose: rgba(22, 22, 22, 1);
+  --cardSeparator: rgba(22, 22, 22, 0.1);
+  --bgScrollModify: #e8e8e8;
+  --bgUserName: #97c77f;
+}
+
+[data-theme=violet] {
+  --bgSidebar: #5255bc;
+  --bgHeader: #ffffff;
+  --bgMain: #ecedfd;
+  --bgHelp: rgba(236, 237, 253, 0.4);
+  --bgCard: #ffffff;
+  --primary: #ffffff;
+  --secondary: rgba(255, 255, 255, 0.5);
+  --accent: #5255bc;
+  --accentHover: #7b7ede;
+  --btnPlus: #b8bcfd;
+  --btnPlusHover: #979cea;
+  --scroll: #b8bcfd;
+  --bgScroll: #ffffff;
+  --borderTheme: #ecedfd;
+  --textThemeMenu: #161616;
+  --bgModal: #fcfcfc;
+  --modalTitle: #161616;
+  --modalBtnText: #ffffff;
+  --iconPlus: rgba(22, 22, 22, 1);
+  --colorFilters: rgba(22, 22, 22, 0.8);
+  --iconsCard: rgba(22, 22, 22, 0.5);
+  --bgIconPlus: #5255bc;
+  --bgIconPlusCard: #161616;
+  --bgSbTitleBoard: rgba(255, 255, 255, 0.5);
+  --inputBorder: rgba(82, 85, 188, 0.4);
+  --inputBorderAccent: rgba(82, 85, 188, 1);
+  --modalInputBg: #fcfcfc;
+  --sbSubtitle: #ffffff80;
+  --sbBorderNew: #ffffff1a;
+  --btnAddBoard: #ffffff;
+  --sbActiveBoard: rgba(255, 255, 255, 0.5);
+  --sbBoardName: rgba(255, 255, 255, 0.5);
+  --sbActiveFlag: #ffffff;
+  --sbLogoSvg: #5255bc;
+  --LogOutSvgHov: #b8bcfd;
+  --sbBoardSvg: #16161680;
+  --popCardBorderColor: none;
+  --cardText: rgba(22, 22, 22, 0.7);
+  --popCardInputTextColor: rgba(22, 22, 22, 1);
+  --popCardPlaceHolder: rgba(22, 22, 22, 0.4);
+  --popCardInputBgColor: #FFFFFF;
+  --ModalIconClose: rgba(22, 22, 22, 1);
+  --cardSeparator: rgba(22, 22, 22, 0.1);
+  --bgScrollModify: #ffffff;
+  --bgUserName: #8b8ee3;
+}
+
+*,
+::before,
+::after {
+  box-sizing: border-box;
+}
+
+body {
+  background-repeat: no-repeat;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Poppins", "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.28px;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+img {
+  display: block;
+}/*# sourceMappingURL=index.module.css.map */
