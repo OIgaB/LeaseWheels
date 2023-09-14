@@ -1,5 +1,9 @@
 import { Suspense, lazy } from 'react';
 import { Route, Routes, Navigate } from 'react-router-dom';
+import { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { getCars } from "../redux/selectors";
+import { getAllCars } from "../redux/carsOperations";
 
 // import { SharedLayout } from 'components/SharedLayout/SharedLayout';
 
@@ -10,6 +14,17 @@ const NotFoundPage = lazy(() => import('pages/NotFoundPage'));
 
 
 export const App = () => {
+  const { items: cars, loading, error } = useSelector(getCars); // items - масив об'єктів зі стору
+  console.log('cars in App from redux:', cars);
+  console.log('loading in App from redux:', loading);
+  console.log('error in App from redux:', error);
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+      dispatch(getAllCars()) 
+  }, [dispatch]); 
+
   return (
     <div>
       <>
