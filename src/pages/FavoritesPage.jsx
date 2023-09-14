@@ -4,7 +4,7 @@ const FavoritesPage = () => {
     return (
       <>
         {/* <FavoritesPage /> */}
-        <h3>Hi there! I am a FavoritesPage!</h3>
+        <h3>Hi there! I am a FavoritesPage! сторінка з оголошеннями, які були додані користувачем в улюблені Зовнішній вигляд програми повинен складатися з cайдбару та області перегляду.</h3>
         <p>
           <NavLink to="/catalogue">Link to CatalogePage (click me)</NavLink>
         </p>
