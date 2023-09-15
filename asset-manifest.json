@@ -1,25 +1,26 @@
 {
   "files": {
-    "main.css": "/LeaseWheels/static/css/main.aa1ffbdc.css",
-    "main.js": "/LeaseWheels/static/js/main.d655a015.js",
-    "static/js/983.84023578.chunk.js": "/LeaseWheels/static/js/983.84023578.chunk.js",
-    "static/js/69.013a505a.chunk.js": "/LeaseWheels/static/js/69.013a505a.chunk.js",
-    "static/js/697.d9415548.chunk.js": "/LeaseWheels/static/js/697.d9415548.chunk.js",
+    "main.css": "/LeaseWheels/static/css/main.5833d955.css",
+    "main.js": "/LeaseWheels/static/js/main.aaaaf42d.js",
+    "static/js/983.acaeb3f5.chunk.js": "/LeaseWheels/static/js/983.acaeb3f5.chunk.js",
+    "static/js/69.b5314177.chunk.js": "/LeaseWheels/static/js/69.b5314177.chunk.js",
+    "static/js/697.2ab9e0c9.chunk.js": "/LeaseWheels/static/js/697.2ab9e0c9.chunk.js",
     "static/js/520.5a9dc0ea.chunk.js": "/LeaseWheels/static/js/520.5a9dc0ea.chunk.js",
     "static/media/Montserrat-Regular.woff2": "/LeaseWheels/static/media/Montserrat-Regular.fc432875c59da8482816.woff2",
     "static/media/Manrope-SemiBold.woff2": "/LeaseWheels/static/media/Manrope-SemiBold.1462dbdef4469fb3b4c3.woff2",
     "static/media/Manrope-Regular.woff2": "/LeaseWheels/static/media/Manrope-Regular.2e6d3d21cb34c92a8f7a.woff2",
     "static/media/Manrope-Medium.woff2": "/LeaseWheels/static/media/Manrope-Medium.0b33f41eb1974d58060a.woff2",
+    "static/media/sprite.svg": "/LeaseWheels/static/media/sprite.e088db54e6a299ea2d90bdc01eef76e5.svg",
     "index.html": "/LeaseWheels/index.html",
-    "main.aa1ffbdc.css.map": "/LeaseWheels/static/css/main.aa1ffbdc.css.map",
-    "main.d655a015.js.map": "/LeaseWheels/static/js/main.d655a015.js.map",
-    "983.84023578.chunk.js.map": "/LeaseWheels/static/js/983.84023578.chunk.js.map",
-    "69.013a505a.chunk.js.map": "/LeaseWheels/static/js/69.013a505a.chunk.js.map",
-    "697.d9415548.chunk.js.map": "/LeaseWheels/static/js/697.d9415548.chunk.js.map",
+    "main.5833d955.css.map": "/LeaseWheels/static/css/main.5833d955.css.map",
+    "main.aaaaf42d.js.map": "/LeaseWheels/static/js/main.aaaaf42d.js.map",
+    "983.acaeb3f5.chunk.js.map": "/LeaseWheels/static/js/983.acaeb3f5.chunk.js.map",
+    "69.b5314177.chunk.js.map": "/LeaseWheels/static/js/69.b5314177.chunk.js.map",
+    "697.2ab9e0c9.chunk.js.map": "/LeaseWheels/static/js/697.2ab9e0c9.chunk.js.map",
     "520.5a9dc0ea.chunk.js.map": "/LeaseWheels/static/js/520.5a9dc0ea.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.aa1ffbdc.css",
-    "static/js/main.d655a015.js"
+    "static/css/main.5833d955.css",
+    "static/js/main.aaaaf42d.js"
   ]
 }
