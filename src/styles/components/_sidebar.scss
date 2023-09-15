@@ -1,0 +1,38 @@
+.sidebarContainer {
+    width: 859px;
+    height: 74px;
+    margin: 20px auto 210px auto;
+    // display: flex;
+    // flex-direction: row;
+    background-color: aquamarine;
+}
+
+.inputContainer {
+    display: inline-flex;
+    flex-direction: column;
+    margin-right: 18px;
+    background-color: yellowgreen;
+}
+
+.input {
+    height: 48px;
+    padding: 14px 18px;
+    border-radius: 14px;
+    border-color: transparent;
+    background-color: F7F7FB;
+    font-family: 'Manrope, sans-serif';
+    font-size: 14px;
+    line-height: 18px;
+    // 8A8A89  
+    &::placeholder {
+        color: 121417;
+    }
+}
+// .icon {
+//     display: inline-block;
+//     width: 1em;
+//     height: 1em;
+//     stroke-width: 0;
+//     stroke: currentColor;
+//     fill: currentColor;
+// }

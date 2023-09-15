@@ -1,10 +1,12 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useSelector } from "react-redux";
 import { getCars } from "../../redux/selectors";
 import scss from '../../styles/index.module.scss';
+import SvgSprite from '../../images/sprite.svg';
+
 
 const Sidebar = () => {
-  const { items: cars, isLoading, error } = useSelector(getCars); // items - масив об'єктів зі стору
+  const { items: cars, /*isLoading, error*/ } = useSelector(getCars); // items - масив об'єктів зі стору
   // console.log('cars in App from redux:', cars);
   // {error && <h2>{error}</h2>}
   // {isLoading && <Loader />}  
@@ -27,13 +29,40 @@ const Sidebar = () => {
   const uniqueBrands = cars.flatMap(car => car.make).filter((make, index, array) => array.indexOf(make) === index).sort((a, b) => a.localeCompare(b));
 
   const [selectedBrand, setSelectedBrand] = useState('');
+  const [isOpenBrands, setIsOpenBrands] = useState(false);  
   const [selectedPrice, setSelectedPrice] = useState('');
+  const [selectedPriceUI, setSelectedPriceUI] = useState('');
+  const [isOpenPrices, setIsOpenPrices] = useState(false);
   const [mileageValueFromUI, setMileageValueFromUI] = useState('');
   const [mileageValueFrom, setMileageValueFrom] = useState('');
   const [mileageValueToUI, setMileageValueToUI] = useState('');
   const [mileageValueTo, setMileageValueTo] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
-  
+
+//-----------------------------Car brand------------------------------------
+
+  const filteredOptions = uniqueBrands.filter((option) =>
+    option.toLowerCase().includes(selectedBrand.toLowerCase())
+  );
+
+
+
+  const handleBrandOptionSelect = (option) => {
+    setSelectedBrand(option); 
+    setIsOpenBrands(false);
+  };
+//--------------------------------Price/ 1 hour------------------------------
+
+const handlePriceOptionSelect = (option) => {
+  setSelectedPrice(option); 
+  setIsOpenPrices(false);
+};
+
+useEffect(() => {
+    setSelectedPriceUI(`To ${selectedPrice} $`);
+}, [selectedPrice]); 
+
+//------------------------------Сar mileage / km-----------------------------
 
   const hadleMileageValueFromChange = (e) => {
     const value = e.target.value.trim();
@@ -75,68 +104,120 @@ const Sidebar = () => {
     setMileageValueTo(valueWithNoCommas);
     setMileageValueToUI(Number(valueWithNoCommas).toLocaleString('en-US'));  
   };
-  
 
-  const handleSearch = () => {
+  //------------------------------Submit-------------------------------------
+
+  const handleFormSearch = (e) => {
+    e.preventDefault();
     console.log('click');
     console.log('selectedBrand:', selectedBrand);
     console.log('selectedPrice:', selectedPrice);
+    console.log('selectedPriceUI:', selectedPriceUI);
     console.log('mileageValueFromUI:', mileageValueFromUI);
     console.log('mileageValueFrom:', mileageValueFrom);
     console.log('mileageValueToUI:', mileageValueToUI);
     console.log('mileageValueTo:', mileageValueTo);
 
-    setMileageValueFromUI('');
-    setMileageValueToUI('');
+    e.target.reset();
   };
-  
+
 
     return (
-      <div>
-        <ul>
-          <li>
+      <div className={scss.sidebarContainer}>
+        <form onSubmit={handleFormSearch}>
+          <div className={scss.inputContainer}>
             <label htmlFor="brand">Car brand</label>
-            <select name="brand" id="brand" value={selectedBrand} onChange={(e) => setSelectedBrand(e.target.value)}> 
-              <option value="">Enter the text</option>
-              {uniqueBrands &&
-                uniqueBrands.map(brand => (
-                  <option key={brand} value={brand}>{brand}</option>
-                ))
-              }
-            </select>  
-          </li>
-          <li>
-            <label htmlFor="price">Price/ 1 hour</label>
-            <select name="price" id="price" value={selectedPrice} onChange={(e) => setSelectedPrice(e.target.value)}> 
-              {prices.map(price => (
-                <option key={price} value={price}>{price}</option>
-              ))}      
-            </select>  
-          </li>
-        </ul>
-        <label> 
-          Сar mileage / km
-            <input 
-              type="text" 
-              name="mileageFrom" 
-              placeholder="From"
-              value={mileageValueFromUI} 
-              onChange={hadleMileageValueFromChange} 
-              // className={scss.OBAddInput}
+            <input
+              type="text"
+              name='brand'
+              id='brand'
+              placeholder="Enter the text"
+              value={selectedBrand}
+              onChange={(e) => setSelectedBrand(e.target.value)}
+              className={scss.input}
             />
-            <input 
-              type="text" 
-              name="mileageTo" 
-              placeholder="To"
-              value={mileageValueToUI} 
-              onChange={hadleMileageValueToChange} 
-              // className={scss.OBAddInput}
-            />       
-        </label>
-          {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}     
-        <button type="button" onClick={handleSearch} /*className={scss.OBAddSubmitBtn}*/>Search</button>
-      </div>
-    );
-  };
+            <button
+              type="button"
+              // className={scss.OBCardBtnIcon}
+              aria-label="arrow"
+              onClick={() => setIsOpenBrands(!isOpenBrands)}
+            >
+              <svg width="20" height="20">
+                <use href={SvgSprite + '#icon-chevron-down'} />
+              </svg>
+            </button>
+          </div>
+          {isOpenBrands && (
+            <ul>
+              {filteredOptions.map((option) => (
+                <li key={option} onClick={() => handleBrandOptionSelect(option)}>
+                  {option}
+                </li>
+              ))}
+            </ul>
+          )}
+
+
+        <div className={scss.inputContainer}>
+          <label htmlFor="price">Price/ 1 hour</label>
+          <input
+            type="text"
+            name='price'
+            id='price'
+            placeholder="To $"
+            value={selectedPriceUI}
+            onChange={(e) => setSelectedPrice(e.target.value)}
+            className={scss.input}
+          />
+            <button
+              type="button"
+              // className={scss.OBCardBtnIcon}
+              aria-label="arrow"
+              onClick={() => setIsOpenPrices(!isOpenPrices)}
+            >
+              <svg width="20" height="20">
+                <use href={SvgSprite + '#icon-chevron-down'} />
+              </svg>
+            </button>
+          </div>
+          {isOpenPrices && (
+            <ul>
+              {prices.map((option) => (
+                <li key={option} onClick={() => handlePriceOptionSelect(option)}>
+                  {option}
+                </li>
+              ))}
+            </ul>
+          )}
+
+
+        <div className={scss.inputContainer}>
+          <label htmlFor="price">Сar mileage / km</label>
+          <input 
+            type="text" 
+            id='mileage'
+            name="mileageFrom" 
+            placeholder="From"
+            value={mileageValueFromUI} 
+            onChange={hadleMileageValueFromChange} 
+            // className={scss.OBAddInput}
+          />
+          <input 
+            type="text" 
+            id='mileage'
+            name="mileageTo" 
+            placeholder="To"
+            value={mileageValueToUI} 
+            onChange={hadleMileageValueToChange} 
+            // className={scss.OBAddInput}
+          /> 
+          {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}   
+        </div>    
+           
+        <button type="submit" /*className={scss.OBAddSubmitBtn}*/>Search</button>
+        </form>
+    </div>
+  );
+};
   
   export default Sidebar;
