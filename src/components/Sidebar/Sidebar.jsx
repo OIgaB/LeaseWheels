@@ -124,9 +124,9 @@ useEffect(() => {
 
     return (
       <div className={scss.sidebarContainer}>
-        <form onSubmit={handleFormSearch}>
+        <form onSubmit={handleFormSearch} className={scss.sidebarForm}>
           <div className={scss.inputContainer}>
-            <label htmlFor="brand">Car brand</label>
+            <label htmlFor="brand" className={scss.label}>Car brand</label>
             <input
               type="text"
               name='brand'
@@ -134,11 +134,11 @@ useEffect(() => {
               placeholder="Enter the text"
               value={selectedBrand}
               onChange={(e) => setSelectedBrand(e.target.value)}
-              className={scss.input}
+              className={`${scss.input} ${scss.customBrandInput}`}
             />
             <button
               type="button"
-              // className={scss.OBCardBtnIcon}
+              className={scss.iconBtn}
               aria-label="arrow"
               onClick={() => setIsOpenBrands(!isOpenBrands)}
             >
@@ -146,20 +146,21 @@ useEffect(() => {
                 <use href={SvgSprite + '#icon-chevron-down'} />
               </svg>
             </button>
-          </div>
+
           {isOpenBrands && (
-            <ul>
+            <ul className={`${scss.dropdown} ${scss.bransList}`}>
               {filteredOptions.map((option) => (
-                <li key={option} onClick={() => handleBrandOptionSelect(option)}>
+                <li key={option} onClick={() => handleBrandOptionSelect(option)} className={`${scss.listItem} ${scss.brandslistItem}`}>
                   {option}
                 </li>
               ))}
             </ul>
           )}
-
+        </div>
+      
 
         <div className={scss.inputContainer}>
-          <label htmlFor="price">Price/ 1 hour</label>
+          <label htmlFor="price" className={scss.label}>Price/ 1 hour</label>
           <input
             type="text"
             name='price'
@@ -167,11 +168,11 @@ useEffect(() => {
             placeholder="To $"
             value={selectedPriceUI}
             onChange={(e) => setSelectedPrice(e.target.value)}
-            className={scss.input}
+            className={`${scss.input} ${scss.customPriceInput}`}
           />
             <button
               type="button"
-              // className={scss.OBCardBtnIcon}
+              className={scss.iconBtn}
               aria-label="arrow"
               onClick={() => setIsOpenPrices(!isOpenPrices)}
             >
@@ -179,42 +180,44 @@ useEffect(() => {
                 <use href={SvgSprite + '#icon-chevron-down'} />
               </svg>
             </button>
-          </div>
+        
           {isOpenPrices && (
-            <ul>
+            <ul className={`${scss.dropdown} ${scss.pricesList}`}>
               {prices.map((option) => (
-                <li key={option} onClick={() => handlePriceOptionSelect(option)}>
+                <li key={option} onClick={() => handlePriceOptionSelect(option)} className={`${scss.listItem} ${scss.priceslistItem}`}>
                   {option}
                 </li>
               ))}
             </ul>
           )}
-
+        </div>
 
         <div className={scss.inputContainer}>
-          <label htmlFor="price">Сar mileage / km</label>
-          <input 
-            type="text" 
-            id='mileage'
-            name="mileageFrom" 
-            placeholder="From"
-            value={mileageValueFromUI} 
-            onChange={hadleMileageValueFromChange} 
-            // className={scss.OBAddInput}
-          />
-          <input 
-            type="text" 
-            id='mileage'
-            name="mileageTo" 
-            placeholder="To"
-            value={mileageValueToUI} 
-            onChange={hadleMileageValueToChange} 
-            // className={scss.OBAddInput}
-          /> 
+          <label htmlFor="price" className={scss.label}>Сar mileage / km</label>
+          <div className={scss.inputMileageContainer}>
+            <input 
+              type="text" 
+              id='mileage'
+              name="mileageFrom" 
+              placeholder="From"
+              value={mileageValueFromUI} 
+              onChange={hadleMileageValueFromChange} 
+              className={`${scss.input} ${scss.customMileageInputLeft}`}
+            />
+            <input 
+              type="text" 
+              id='mileage'
+              name="mileageTo" 
+              placeholder="To"
+              value={mileageValueToUI} 
+              onChange={hadleMileageValueToChange} 
+              className={`${scss.input} ${scss.customMileageInputRight}`}
+            />             
+          </div> 
           {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}   
         </div>    
            
-        <button type="submit" /*className={scss.OBAddSubmitBtn}*/>Search</button>
+        <button type="submit" className={scss.submitBtn}>Search</button>
         </form>
     </div>
   );

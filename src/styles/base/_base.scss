@@ -7,6 +7,7 @@
 }
 
 body {
+  position: relative;
   background-repeat: no-repeat;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Poppins', 'Segoe UI',
@@ -18,6 +19,25 @@ body {
   font-weight: 400;
   line-height: normal;
   letter-spacing: -0.28px;
+
+
+//--------------- scroll -----------------
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    border-radius: 10px;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: rgba(18, 20, 23, 0.05); 
+    border-radius: 10px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(18, 20, 23, 0.1); 
+  }
 }
 
 code {

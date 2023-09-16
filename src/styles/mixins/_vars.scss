@@ -40,7 +40,7 @@ $maxWidthContentMobile: 600px;
 $fonts: (
   r: 'Manrope-Regular',
   m: 'Manrope-Medium',
-  b: 'Manrope-SemiBold',
+  sb: 'Manrope-SemiBold',
   rmont: 'Montserrat-Regular',
 );
 //Пример использования      font-family: map-get($fonts, r), sans-serif;
