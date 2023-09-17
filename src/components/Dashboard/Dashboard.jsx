@@ -2,7 +2,9 @@ import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getCars } from "../../redux/selectors";
 import { getAllCars } from "redux/carsOperations";
-import { Loader } from "components/Loader";
+import { Loader } from "../Loader";
+import { Modal } from "../Modal";
+import { DetailedCard } from "../DetailedCard";
 import scss from '../../styles/index.module.scss';
 import SvgSprite from '../../images/sprite.svg';
 
@@ -10,10 +12,10 @@ import SvgSprite from '../../images/sprite.svg';
 const Dashboard = () => {
     const [allCars, setAllCars] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
+    const [isModalOpen, setIsModalOpen] = useState(false);
 
     const { items: cars, isLoading, error } = useSelector(getCars);
 
-console.log(cars.length)
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -41,6 +43,14 @@ console.log(cars.length)
 
     const handleModel = (make, model) => {
         return (make.length + model.length > 17) ? `${model.slice(0, 5)}...` : `${model}`; 
+    };
+
+    const handleOpenModal = () => {
+        setIsModalOpen(true);
+    };
+    
+    const handleCloseModal = () => {
+        setIsModalOpen(false);
     };
 
     if(currentPage !== 1) {
@@ -85,11 +95,25 @@ console.log(cars.length)
                             <div className={scss.cardDesc}>
                                 <p>{`${handleAddress(address)} ${rentalCompany} | ${rentalPrice.slice(1) > 50 ? 'Premium |' : 'Economy |'}`}<span style={{ textTransform: 'capitalize' }}>{` ${type.toLowerCase()} |`}</span>{` ${model} | ${id} | ${functionalities[0]}`}</p>
                             </div>
-                            <button type="button" className={scss.learnMoreBtn}>Learn more</button>
+                            <button 
+                                type="button" 
+                                onClick={handleOpenModal}
+                                className={scss.learnMoreBtn}
+                            >
+                                Learn more
+                            </button>
                         </li>
                     ))
                 )}
             </ul>
+            {isModalOpen && (
+                <Modal isOpen={isModalOpen} onClose={handleCloseModal}>
+                    <DetailedCard />
+                        {/* // onClose={handleCloseAddCardModal}
+                        // idColumn={activeColumnId}
+                        // operation={addTasks} */}
+                </Modal>
+            )}
             {(allCars.length !== 0 && currentPage !== 4) && 
                 <button 
                     type="button" 

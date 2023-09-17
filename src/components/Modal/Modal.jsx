@@ -6,7 +6,7 @@ import SvgSprite from '../../images/sprite.svg';
 
 const modalRoot = document.querySelector('#modal-root');
 
-export const Modal = ({ onClose, children }) => {
+const Modal = ({ onClose, children }) => {
 
    useEffect(() => {
 
@@ -45,3 +45,5 @@ export const Modal = ({ onClose, children }) => {
       </div>, modalRoot)  
    )
 };
+
+export default Modal;
