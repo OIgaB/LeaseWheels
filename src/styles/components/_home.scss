@@ -1,0 +1,99 @@
+.homeContainer {
+    position: relative;
+    height: 100vh; 
+    background-image: url('https://res.cloudinary.com/ditdqzoio/image/upload/v1687252635/cars/volvo_xc60.webp'); 
+    background-size: cover;
+    background-position: center;
+}
+
+.homeOverlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); 
+}
+
+.homecontent {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+}
+
+.homeTitle {
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+.homeCall {
+    font-size: 25px;
+    margin-bottom: 40px;
+    font-style: italic;
+}
+
+.homebtn {
+    padding: 15px 50px;
+    background-color: #3470FF; 
+    color: white;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    font-family: map-get($fonts, sb), sans-serif;
+    font-size: 18px;
+    line-height: 20px;
+    transition: $transition;
+    &:hover,
+    &:focus {
+        background-color: #0B44CD;
+    }
+}
+
+.homeAdvantages {
+    width: 70px;
+    height: 370px;
+    background: linear-gradient(to bottom, #4b0a0a, rgba(0, 255, 0, 0));
+    padding: 20px;
+    margin: 20px;
+    border-radius: 5px;
+}
+
+.homeAdvantageItem {
+    display: flex;
+    width: 700px;
+    height: 30px;
+    // background-color: #4b0a0a; 
+    margin-bottom: 20px;
+    align-items: center;
+}
+
+.homeAdvantageIcon {
+    display: block;
+    width: 30px;
+    height: 30px;
+    border: 4px solid #007BFF; 
+    background-color: #fff; 
+    border-radius: 40%;
+}
+
+.homeAdvantageText {
+    margin-left: 40px;
+    color: white;
+    font-size: 20px;
+    font-weight: 600;
+    transition: $transition;
+    animation: moveAnimation 3s ease alternate;
+    transform-origin: center;
+}
+
+@keyframes moveAnimation {
+    0% {
+      transform: translateX(30px);
+    }
+    100% {
+      transform: translateX(0);  
+    }
+}
