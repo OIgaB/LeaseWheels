@@ -26,6 +26,9 @@
     src: url('../../fonts/Montserrat-Regular.woff2') format('woff2');
   }
 
-  
-  // loadMore: 3470FF Manrope  m  fs: 16    lh: 24
-  // модальне вікно: Montserrat r
+  @font-face {
+    font-family: 'Montserrat-SemiBold';
+    font-style: normal;
+    font-weight: 600; 
+    src: url('../../fonts/Montserrat-Regular.woff2') format('woff2');
+  }

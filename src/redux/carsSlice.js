@@ -20,7 +20,7 @@ const handleFulfilledGot = (state, { payload }) => {  // payload - масив о
 
 const handleFulfilledGotByID = (state, { payload }) => {
     state.isLoading = false;
-    state.item = payload;
+    state.itemById = payload;
 }
 
 const handleRejected = (state, { payload }) => {

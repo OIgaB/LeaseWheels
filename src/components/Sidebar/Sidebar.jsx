@@ -6,10 +6,8 @@ import SvgSprite from '../../images/sprite.svg';
 
 
 const Sidebar = () => {
-  const { items: cars, /*isLoading, error*/ } = useSelector(selectCars); // items - масив об'єктів зі стору
-  // console.log('cars in App from redux:', cars);
-  // {error && <h2>{error}</h2>}
-  // {isLoading && <Loader />}  
+  const { items: cars } = useSelector(selectCars); 
+
 
   const largestPrice = cars.reduce((acc, { rentalPrice }) => { // "$500"
     return Number(rentalPrice.slice(1)) > Number(acc) ? rentalPrice.slice(1) : acc; 
@@ -76,7 +74,7 @@ useEffect(() => {
 
       setTimeout(() => {
         setErrorMessage(''); 
-      }, 3000); 
+      }, 2000); 
 
       return;
     }

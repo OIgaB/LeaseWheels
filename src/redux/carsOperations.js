@@ -26,9 +26,9 @@ export const getCarByID = createAsyncThunk(
     'cars/getCard',
     async (id, { rejectWithValue}) => { 
         try {
-            const { data } = await axios.get(`/adverts/${id}`);
-            console.log('data in operat:', data)
-            return data;
+            const { data } = await axios.get(`/adverts?id=${id}`);
+            // console.log('data in operation:', data[0])
+            return data[0];
         } catch (error) {
             return rejectWithValue(error.message);
         }

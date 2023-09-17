@@ -1,6 +1,102 @@
-.detailedCardContainer {
+.cardDetailsContainer {
     width: 541px;
     height: 752px;
+    padding: 40px;
     background-color: bisque;
     border-radius: 24px;
+}
+
+.cardPictureContainer {
+    width: 461px;
+    height: 248px;
+    margin-bottom: 14px;
+}
+
+.cardPicture {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 14px;
+}
+
+.cardName {
+    margin-bottom: 8px;
+    font-family: map-get($fonts, m), sans-serif;
+    font-size: 18px;
+    line-height: 24px;
+    color: #121417; 
+}
+
+.cardDescr {
+    display: inline;
+    border: 1px solid transparent;
+    color: rgba(18, 20, 23, 0.50);
+    font-family: map-get($fonts, r), sans-serif;
+    font-size: 12px;
+    line-height: 18px;
+    &:not(:last-child) {
+        padding-right: 6px;
+        margin-right: 6px;
+        border-right-color: rgba(18, 20, 23, 0.10);
+    } 
+}
+
+.cardCarType {
+    text-transform: capitalize;
+} 
+
+.cardPromo {
+    margin-top: 14px;
+    margin-bottom: 24px;
+    color: #121417;
+    font-family: map-get($fonts, r), sans-serif;
+    font-size: 14px;
+    line-height: 20px;
+}
+
+.cardAccesFunc {
+    margin-bottom: 8px;
+    color: #121417;
+    font-family: map-get($fonts, m), sans-serif;
+    font-size: 14px;
+    line-height: 20px;
+}
+
+.cardConditionsContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 24px;
+}
+
+.cardConditions {
+    font-family: map-get($fonts, rmont), sans-serif;
+    color: #363535;
+    font-size: 12px;
+    line-height: 18px; 
+    letter-spacing: -0.24px;  
+    background-color: #F9F9F9; 
+    border-radius: 35px;
+    padding: 7px 14px;
+}
+
+.cardConditionsAccent {
+    font-family: map-get($fonts, sbrmont), sans-serif;
+    color: #3470FF;
+}
+
+.rentalCarBtn {
+    width: 168px;
+    height: 44px;
+    font-family: map-get($fonts, sb), sans-serif;
+    font-size: 14px;
+    line-height: 20px;
+    color: #FFFFFF;
+    border-color: transparent;
+    border-radius: 12px;
+    background-color: #3470FF;
+    &:hover,
+    &:focus {
+        background-color: #0B44CD;
+    }
 }
