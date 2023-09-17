@@ -3,7 +3,6 @@
     width: 860px;
     height: 74px;
     margin: 30px auto 30px auto;
-    border: 1px solid red;
 }
 
 .sidebarForm {
@@ -93,6 +92,7 @@
     background-color: #FFFFFF;
     overflow-y: auto;
     overflow-x: hidden;
+    z-index: 1;
 }
 
 .bransList {

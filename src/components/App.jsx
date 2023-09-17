@@ -1,8 +1,8 @@
 import { Suspense, lazy } from 'react';
 import { Route, Routes, Navigate } from 'react-router-dom';
-import { useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { getAllCars } from "../redux/carsOperations";
+// import { useEffect } from "react";
+// import { useDispatch } from "react-redux";
+// import { getAllCars } from "../redux/carsOperations";
 import { Loader } from '../components/Loader';
 import { SharedLayout } from '../components/SharedLayout';
 
@@ -13,11 +13,11 @@ const NotFoundPage = lazy(() => import('pages/NotFoundPage'));
 
 
 export const App = () => {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
-  useEffect(() => {
-      dispatch(getAllCars()) 
-  }, [dispatch]); 
+  // useEffect(() => {
+  //     dispatch(getAllCars()) 
+  // }, [dispatch]); 
 
   return (
     <div>

@@ -436,7 +436,6 @@ img {
   width: 860px;
   height: 74px;
   margin: 30px auto 30px auto;
-  border: 1px solid red;
 }
 
 .sidebarForm {
@@ -528,6 +527,7 @@ img {
   background-color: #FFFFFF;
   overflow-y: auto;
   overflow-x: hidden;
+  z-index: 1;
 }
 
 .bransList {
@@ -581,4 +581,122 @@ img {
 }
 .submitBtn:hover, .submitBtn:focus {
   background-color: #0B44CD;
+}
+
+.dashbordContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.dashbordList {
+  width: 1440px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 100px;
+  display: flex;
+  gap: 29px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.listCard {
+  position: relative;
+  width: 274px;
+  height: 426px;
+}
+
+.pictureContainer {
+  width: 274px;
+  height: 268px;
+}
+
+.picture {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 14px;
+}
+
+.iconHeartBtn {
+  position: absolute;
+  top: 14px;
+  right: 35px;
+  width: 0;
+  height: 0;
+  padding: 0;
+  border: none;
+  background-color: transparent;
+  border: none;
+  fill: transparent;
+  stroke: #fff;
+  transition: 250ms cubic-bezier(0.4, 0, 0.2, 1) 0s;
+}
+.iconHeartBtn:hover, .iconHeartBtn:focus {
+  stroke: #3470FF;
+  fill: #3470FF;
+}
+
+.cardHeaderPrice {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 14px;
+  margin-bottom: 8px;
+  padding-right: 9px;
+  font-family: "Manrope-Medium", sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  color: #121417;
+}
+
+.cardDesc {
+  font-family: "Manrope-Regular", sans-serif;
+  font-size: 12px;
+  line-height: 18px;
+  color: rgba(18, 20, 23, 0.5);
+  margin-bottom: 28px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.learnMoreBtn {
+  width: 274px;
+  height: 44px;
+  font-family: "Manrope-SemiBold", sans-serif;
+  font-size: 14px;
+  line-height: 20px;
+  color: #FFFFFF;
+  border-color: transparent;
+  border-radius: 12px;
+  background-color: #3470FF;
+}
+.learnMoreBtn:hover, .learnMoreBtn:focus {
+  background-color: #0B44CD;
+}
+
+.loadMoreBtn {
+  margin-bottom: 150px;
+  background-color: transparent;
+  border-color: transparent;
+  font-family: "Manrope-Medium", sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  text-decoration-line: underline;
+  color: #3470FF;
+}
+.loadMoreBtn:hover, .loadMoreBtn:focus {
+  color: #0B44CD;
+}
+
+.collectionEnd {
+  font-family: "Manrope-SemiBold", sans-serif;
+  font-size: 20px;
+  line-height: 24px;
+  color: #fd0000;
+  text-align: center;
+  margin-bottom: 150px;
 }/*# sourceMappingURL=index.module.css.map */

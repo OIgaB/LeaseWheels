@@ -1,0 +1,120 @@
+.dashbordContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.dashbordList {
+    width: 1440px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 100px;
+    display: flex;
+    gap: 29px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.listCard {
+    position: relative;
+    width: 274px;
+    height: 426px;
+}
+
+.pictureContainer {
+    width: 274px;
+    height: 268px;
+}
+
+.picture {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 14px;
+}
+
+.iconHeartBtn {
+    position: absolute;
+    top: 14px;
+    right: 35px;
+    width: 0;
+    height: 0;
+    padding: 0;
+    border: none;
+    background-color: transparent;
+    border: none;
+    fill: transparent;
+    stroke: #fff;  
+    transition: $transition;
+      &:hover,
+      &:focus {
+        stroke: #3470FF;
+        fill: #3470FF;
+      }
+}
+
+.cardHeaderPrice {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 14px;
+    margin-bottom: 8px;
+    padding-right: 9px;
+    font-family: map-get($fonts, m), sans-serif;
+    font-size: 16px;
+    line-height: 24px;
+    color: #121417; 
+}
+
+.cardDesc{
+    font-family: map-get($fonts, r), sans-serif;
+    font-size: 12px;
+    line-height: 18px;
+    color: rgba(18, 20, 23, 0.5);
+    margin-bottom: 28px;
+
+    display: -webkit-box;
+    -webkit-line-clamp: 2; // обмежує зміст до 2х рядків (працює тільки в зв'язці з спорідненими властивостями)
+    -webkit-box-orient: vertical;
+    overflow: hidden; // щоб текст, який не вмістився, не виліз за рамки картки
+    text-overflow: ellipsis; // проставляє три крапки, інакше текст обрізаний на півбукві
+}
+
+.learnMoreBtn {
+    width: 274px;
+    height: 44px;
+    font-family: map-get($fonts, sb), sans-serif;
+    font-size: 14px;
+    line-height: 20px;
+    color: #FFFFFF;
+    border-color: transparent;
+    border-radius: 12px;
+    background-color: #3470FF;
+    &:hover,
+    &:focus {
+        background-color: #0B44CD;
+    }
+}
+
+.loadMoreBtn {
+    margin-bottom: 150px;
+    background-color: transparent;
+    border-color: transparent;
+    font-family: map-get($fonts, m), sans-serif;
+    font-size: 16px;
+    line-height: 24px; 
+    text-decoration-line: underline;
+    color: #3470FF;
+    &:hover,
+    &:focus {
+        color: #0B44CD;
+    }
+}
+
+.collectionEnd {
+    font-family: map-get($fonts, sb), sans-serif;
+    font-size: 20px;
+    line-height: 24px; 
+    color: #fd0000;
+    text-align: center;
+    margin-bottom: 150px;
+}
