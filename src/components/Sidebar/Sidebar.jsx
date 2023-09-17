@@ -1,12 +1,12 @@
 import { useState, useEffect } from 'react';
 import { useSelector } from "react-redux";
-import { getCars } from "../../redux/selectors";
+import { selectCars } from "../../redux/selectors";
 import scss from '../../styles/index.module.scss';
 import SvgSprite from '../../images/sprite.svg';
 
 
 const Sidebar = () => {
-  const { items: cars, /*isLoading, error*/ } = useSelector(getCars); // items - масив об'єктів зі стору
+  const { items: cars, /*isLoading, error*/ } = useSelector(selectCars); // items - масив об'єктів зі стору
   // console.log('cars in App from redux:', cars);
   // {error && <h2>{error}</h2>}
   // {isLoading && <Loader />}  

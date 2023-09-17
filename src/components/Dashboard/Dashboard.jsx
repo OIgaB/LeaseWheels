@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getCars } from "../../redux/selectors";
+import { selectCars } from "../../redux/selectors";
 import { getAllCars } from "redux/carsOperations";
 import { Loader } from "../Loader";
 import { Modal } from "../Modal";
@@ -14,7 +14,7 @@ const Dashboard = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const [isModalOpen, setIsModalOpen] = useState(false);
 
-    const { items: cars, isLoading, error } = useSelector(getCars);
+    const { items: cars, isLoading, error } = useSelector(selectCars);
 
     const dispatch = useDispatch();
 
@@ -33,7 +33,6 @@ const Dashboard = () => {
             });
         }
     }, [cars]);
-
 
     const handleAddress = (address) => {
         const parts = address.split(',').map(part => part.trim());
@@ -102,18 +101,16 @@ const Dashboard = () => {
                             >
                                 Learn more
                             </button>
+                            {isModalOpen && (
+                                <Modal onClose={handleCloseModal}>
+                                    <DetailedCard id={id} />
+                                </Modal>
+                            )}                              
                         </li>
                     ))
                 )}
             </ul>
-            {isModalOpen && (
-                <Modal isOpen={isModalOpen} onClose={handleCloseModal}>
-                    <DetailedCard />
-                        {/* // onClose={handleCloseAddCardModal}
-                        // idColumn={activeColumnId}
-                        // operation={addTasks} */}
-                </Modal>
-            )}
+
             {(allCars.length !== 0 && currentPage !== 4) && 
                 <button 
                     type="button" 

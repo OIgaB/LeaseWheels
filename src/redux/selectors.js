@@ -1,1 +1,2 @@
-export const getCars = state => state.cars;
+export const selectCars = state => state.cars;
+export const selectCarById = state => state.carsById;

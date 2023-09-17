@@ -1,8 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getAllCars } from './carsOperations';
+import { getAllCars, getCarByID } from './carsOperations';
 
 const initialState = {   
     items: [],
+    itemById: {},
     isLoading: false,
     error: null,
 };
@@ -13,21 +14,14 @@ const handlePending = (state) => {
 
 const handleFulfilledGot = (state, { payload }) => {  // payload - масив об'єктів
     state.isLoading = false;
-    state.items = payload;
+    // state.items = payload;
+    state.items = [...state.items, ...payload];
 }
 
-// const handleFulfilledAdded = (state, { payload }) => {  
-//     state.isLoading = false;
-//     state.items.push(payload);
-// }
-
-// const handleFulfilledDeleted = (state, { payload }) => {  
-//     state.isLoading = false;
-//     const index = state.items.findIndex(
-//         contact => contact.id === payload.id  // знаходимо серед контактів з api той, індекс якого = індексу одного переданого контакту
-//     );
-//     state.items.splice(index, 1); // 1й аргумент - індекс першого елемента для видалення; 2й - к-ть елементів, що видаляються
-// }
+const handleFulfilledGotByID = (state, { payload }) => {
+    state.isLoading = false;
+    state.item = payload;
+}
 
 const handleRejected = (state, { payload }) => {
     state.isLoading = false;
@@ -40,6 +34,7 @@ const carsSlice = createSlice({
     extraReducers: (builder) => {
         builder
             .addCase(getAllCars.fulfilled, handleFulfilledGot)
+            .addCase(getCarByID.fulfilled, handleFulfilledGotByID)
             // .addCase(addContact.fulfilled, handleFulfilledAdded)
             // .addCase(deleteContact.fulfilled, handleFulfilledDeleted)
             //спільні ф-ції обробки стану pending/rejected:
