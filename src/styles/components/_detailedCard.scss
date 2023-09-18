@@ -19,6 +19,11 @@
     border-radius: 14px;
 }
 
+.cardMetaWrapper {
+    height: 365px;
+    overflow-y: auto;
+}
+
 .cardName {
     margin-bottom: 8px;
     font-family: map-get($fonts, m), sans-serif;

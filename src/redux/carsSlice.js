@@ -14,7 +14,6 @@ const handlePending = (state) => {
 
 const handleFulfilledGot = (state, { payload }) => {  // payload - масив об'єктів
     state.isLoading = false;
-    // state.items = payload;
     state.items = [...state.items, ...payload];
 }
 

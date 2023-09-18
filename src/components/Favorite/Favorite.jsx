@@ -5,7 +5,6 @@ import { Card } from '../Card';
 
 const Favorite = () => {
     const favoriteCars = useSelector(selectFavoriteCars);
-    console.log(favoriteCars)
 
     return (
         <div className={scss.dashbordContainer}>
