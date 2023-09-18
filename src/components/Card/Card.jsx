@@ -1,10 +1,14 @@
 import { useState } from "react";
+import { useDispatch } from "react-redux";
 import { Modal } from "../Modal";
 import { DetailedCard } from "../DetailedCard";
+import { addToFavorite } from '../../redux/favoriteSlice'
 import SvgSprite from '../../images/sprite.svg';
 import scss from '../../styles/index.module.scss';
 
 const Card = ({ car: {id, img, make, model, year, rentalPrice, address, rentalCompany, type,  functionalities} }) => {
+    const dispatch = useDispatch();
+    
     const [isModalOpen, setIsModalOpen] = useState(false);
 
     const handleAddress = (address) => {
@@ -38,7 +42,7 @@ const Card = ({ car: {id, img, make, model, year, rentalPrice, address, rentalCo
                         type="button"
                         className={scss.iconHeartBtn}
                         aria-label="heart"
-                        // onClick={dispatch( (id))}
+                        onClick={() => dispatch(addToFavorite(id))}
                     >
                         <svg width="18" height="18">
                             <use href={SvgSprite + '#icon-heart'} />
