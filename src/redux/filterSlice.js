@@ -26,4 +26,5 @@ const persistConfig = {
     storage,
 }
 
+export const { getFilterData } = filterSlice.actions;
 export const filterReducer = persistReducer(persistConfig, filterSlice.reducer);

@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { selectCars } from "../../redux/selectors";
+import { getFilterData } from '../../redux/filterSlice';
 import scss from '../../styles/index.module.scss';
 import SvgSprite from '../../images/sprite.svg';
 import { NavLink } from 'react-router-dom';
@@ -26,6 +27,8 @@ const Sidebar = () => {
 
   const uniqueBrands = cars.flatMap(car => car.make).filter((make, index, array) => array.indexOf(make) === index).sort((a, b) => a.localeCompare(b));
 
+  const dispatch = useDispatch();
+
   const [selectedBrand, setSelectedBrand] = useState('');
   const [isOpenBrands, setIsOpenBrands] = useState(false);  
   const [selectedPrice, setSelectedPrice] = useState('');
@@ -42,7 +45,6 @@ const Sidebar = () => {
   const filteredOptions = uniqueBrands.filter((option) =>
     option.toLowerCase().includes(selectedBrand.toLowerCase())
   );
-
 
 
   const handleBrandOptionSelect = (option) => {
@@ -107,14 +109,24 @@ useEffect(() => {
 
   const handleFormSearch = (e) => {
     e.preventDefault();
-    console.log('click');
+
     console.log('selectedBrand:', selectedBrand);
     console.log('selectedPrice:', selectedPrice);
-    console.log('selectedPriceUI:', selectedPriceUI);
-    console.log('mileageValueFromUI:', mileageValueFromUI);
     console.log('mileageValueFrom:', mileageValueFrom);
-    console.log('mileageValueToUI:', mileageValueToUI);
     console.log('mileageValueTo:', mileageValueTo);
+
+    // console.log('selectedPriceUI:', selectedPriceUI);
+    // console.log('mileageValueFromUI:', mileageValueFromUI);
+    // console.log('mileageValueToUI:', mileageValueToUI);
+    
+    const filterData = {
+      brand: selectedBrand, 
+      price: selectedPrice,  
+      mileageFrom: mileageValueFrom, 
+      mileageTo: mileageValueTo, 
+    };
+
+    dispatch(getFilterData(filterData));
 
     e.target.reset();
   };
