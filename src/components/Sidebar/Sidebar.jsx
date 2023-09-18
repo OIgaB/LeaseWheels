@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import { selectCars } from "../../redux/selectors";
 import scss from '../../styles/index.module.scss';
 import SvgSprite from '../../images/sprite.svg';
+import { NavLink } from 'react-router-dom';
 
 
 const Sidebar = () => {
@@ -121,7 +122,28 @@ useEffect(() => {
 
 
     return (
-      <div className={scss.sidebarContainer}>
+      <div className={scss.sidebarContainer}> 
+        <button
+            type="button"
+            className={`${scss.sidebarIcon} ${scss.sidebarIconLeftBtn}`}
+            aria-label="arrow-left"
+        >
+          Home
+          <NavLink to="/">
+            <svg width="45" height="45">
+                <use href={SvgSprite + '#icon-arrow-left'} />
+            </svg>            
+          </NavLink>
+        </button>
+        <button
+            type="button"
+            className={`${scss.sidebarIcon} ${scss.sidebarIconRightBtn}`}
+            aria-label="arrow-left"
+        >
+            <svg width="45" height="45">
+                <use href={SvgSprite + '#icon-arrow-right'} />
+            </svg>
+        </button>
         <form onSubmit={handleFormSearch} className={scss.sidebarForm}>
           <div className={scss.inputContainer}>
             <label htmlFor="brand" className={scss.label}>Car brand</label>

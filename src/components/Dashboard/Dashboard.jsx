@@ -5,6 +5,12 @@ import { getAllCars } from "redux/carsOperations";
 import { Card } from '../Card';
 import { Loader } from "../Loader";
 import scss from '../../styles/index.module.scss';
+import SvgSprite from '../../images/sprite.svg';
+
+
+{/* <p>
+<NavLink to="/favorites">Link to FavoritesPage (click me)</NavLink>
+</p> */}
 
 
 
@@ -43,7 +49,7 @@ const Dashboard = () => {
     }
 
     return (          
-        <>   
+        <>  
         {isLoading && <Loader />}
         {error && <p>Sorry, data has not loaded.</p>}
         <div className={scss.dashbordContainer}>
