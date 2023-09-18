@@ -5,6 +5,8 @@ import { getAllCars } from "redux/carsOperations";
 import { Card } from '../Card';
 import { Loader } from "../Loader";
 import scss from '../../styles/index.module.scss';
+import SvgSprite from '../../images/sprite.svg';
+import { NavLink } from 'react-router-dom';
 
 
 
@@ -44,6 +46,32 @@ const Dashboard = () => {
 
     return (          
         <>  
+        <button
+            type="button"
+            className={`${scss.sidebarIcon} ${scss.sidebarIconLeftBtn}`}
+            aria-label="arrow-left"
+        >
+          Home
+          <NavLink to="/">
+            <svg width="45" height="45">
+                <use href={SvgSprite + '#icon-arrow-left'} />
+            </svg>            
+          </NavLink>
+        </button>
+        
+        <button
+            type="button"
+            className={`${scss.sidebarIcon} ${scss.sidebarIconRightBtn}`}
+            aria-label="arrow-left"
+        >
+          <NavLink to="/favorites">
+            <svg width="45" height="45">
+                <use href={SvgSprite + '#icon-arrow-right'} />
+            </svg>
+          </NavLink>
+          Favorite
+        </button>
+
         {isLoading && <Loader />}
         {error && <p>Sorry, data has not loaded.</p>}
         <div className={scss.dashbordContainer}>
