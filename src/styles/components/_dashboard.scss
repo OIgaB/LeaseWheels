@@ -42,16 +42,7 @@
     padding: 0;
     border: none;
     background-color: transparent;
-    border: none;
-    // fill: transparent;
-    // stroke: #fff;  
-    transition: $transition;
-    //   &:hover,
-    //   &:focus,
-    //   &:active {
-    //     stroke: #3470FF;
-    //     fill: #3470FF;
-    //   }
+    border: none; 
 }
 
 .cardHeaderPrice {
@@ -74,10 +65,10 @@
     margin-bottom: 28px;
 
     display: -webkit-box;
-    -webkit-line-clamp: 2; // обмежує зміст до 2х рядків (працює тільки в зв'язці з спорідненими властивостями)
+    -webkit-line-clamp: 2; 
     -webkit-box-orient: vertical;
-    overflow: hidden; // щоб текст, який не вмістився, не виліз за рамки картки
-    text-overflow: ellipsis; // проставляє три крапки, інакше текст обрізаний на півбукві
+    overflow: hidden; 
+    text-overflow: ellipsis; 
 }
 
 .learnMoreBtn {
@@ -118,4 +109,69 @@
     color: #fd0000;
     text-align: center;
     margin-bottom: 150px;
+}
+
+.dashbordEmptyContainer {
+    position: relative;
+    height: 100vh; 
+    background-color: #4b0a0a;
+    background-image: url('https://res.cloudinary.com/ditdqzoio/image/upload/v1687252635/cars/bmw_z8.jpg'); 
+    background-size: cover;
+    background-position: center;
+}
+
+.homeOverlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); 
+}
+
+.dashbordNote {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+.dashbordEmptyNavigation {
+    position: absolute;
+    top: -100;
+    right: 20;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 120px;
+    height: 600px;
+    font-family: map-get($fonts, m), sans-serif;
+    font-size: 17px;
+    line-height: 20px;
+    letter-spacing:0rlh;
+    writing-mode: vertical-rl;
+    transform: rotate(-180deg);
+    white-space: nowrap;
+    color: #ffffffa8;
+    border-radius: 12px;
+    transition: $transition;
+    background: linear-gradient(to bottom, rgba(0, 255, 0, 0), #0c43c4); 
+    &:hover,
+    &:focus {
+        color: #ffffffd2;
+        background-color: #0c43c485;
+    }
+}
+
+.dashbordBlank {
+    position: absolute;
+    top: 0;
+    right: 260px;
+    width: 120px;
+    height: 90px;
+    background-color: white;
 }
