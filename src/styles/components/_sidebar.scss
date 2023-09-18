@@ -1,8 +1,51 @@
 .sidebarContainer {
     position: relative;
-    width: 860px;
+    width: 1090px;
     height: 74px;
+    display: flex;
     margin: 30px auto 30px auto;
+}
+
+.sidebarIcon {
+    padding: 0;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding-top: 12px;
+    font-family: map-get($fonts, m), sans-serif;
+    font-size: 14px;
+    line-height: 18px;
+    color: #8A8A89;
+    border: none;
+    background-color: transparent;
+    border: none;
+    fill: transparent;
+    stroke: currentColor;  
+    transition: $transition;
+  &:hover,
+  &:focus {
+    transform: scale(1.1);
+  }  
+}
+
+.sidebarIconLeftBtn {
+    stroke: #3470FF; 
+    transition: $transition;
+    margin-right: 20px;
+    &:hover,
+    &:focus {
+        stroke: #0B44CD;
+    }   
+}
+
+.sidebarIconRightBtn {
+    stroke: #3470FF; 
+    transition: $transition;
+    margin-left: 20px;
+    &:hover,
+    &:focus {
+        stroke: #0B44CD;
+    }   
 }
 
 .sidebarForm {
