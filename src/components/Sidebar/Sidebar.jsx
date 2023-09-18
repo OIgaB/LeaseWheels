@@ -9,7 +9,6 @@ import { NavLink } from 'react-router-dom';
 const Sidebar = () => {
   const { items: cars } = useSelector(selectCars); 
 
-
   const largestPrice = cars.reduce((acc, { rentalPrice }) => { // "$500"
     return Number(rentalPrice.slice(1)) > Number(acc) ? rentalPrice.slice(1) : acc; 
   }, 0); 
@@ -140,9 +139,12 @@ useEffect(() => {
             className={`${scss.sidebarIcon} ${scss.sidebarIconRightBtn}`}
             aria-label="arrow-left"
         >
+          <NavLink to="/favorites">
             <svg width="45" height="45">
                 <use href={SvgSprite + '#icon-arrow-right'} />
             </svg>
+          </NavLink>
+          Favorite
         </button>
         <form onSubmit={handleFormSearch} className={scss.sidebarForm}>
           <div className={scss.inputContainer}>

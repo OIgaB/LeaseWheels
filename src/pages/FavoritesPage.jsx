@@ -1,15 +1,12 @@
 import { NavLink } from 'react-router-dom';
+import { Favorite } from 'components/Favorite';
 
 const FavoritesPage = () => {
     return (
       <>
-        {/* <FavoritesPage /> */}
-        <h3>Hi there! I am a FavoritesPage! сторінка з оголошеннями, які були додані користувачем в улюблені Зовнішній вигляд програми повинен складатися з cайдбару та області перегляду.</h3>
+        <Favorite />
         <p>
-          <NavLink to="/catalogue">Link to CatalogePage (click me)</NavLink>
-        </p>
-        <p>
-          <NavLink to="/">Link to HomePage (click me)</NavLink>
+          <NavLink to="/catalogue">CatalogePage (click me)</NavLink>
         </p>
       </>
     );
