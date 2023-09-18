@@ -1,9 +1,9 @@
 {
   "files": {
-    "main.css": "/LeaseWheels/static/css/main.38340dfa.css",
-    "main.js": "/LeaseWheels/static/js/main.c3567e21.js",
+    "main.css": "/LeaseWheels/static/css/main.f767922b.css",
+    "main.js": "/LeaseWheels/static/js/main.1edd23ac.js",
     "static/js/752.2017870a.chunk.js": "/LeaseWheels/static/js/752.2017870a.chunk.js",
-    "static/js/741.c758c063.chunk.js": "/LeaseWheels/static/js/741.c758c063.chunk.js",
+    "static/js/741.087d8eda.chunk.js": "/LeaseWheels/static/js/741.087d8eda.chunk.js",
     "static/js/496.ac484586.chunk.js": "/LeaseWheels/static/js/496.ac484586.chunk.js",
     "static/js/520.042a901b.chunk.js": "/LeaseWheels/static/js/520.042a901b.chunk.js",
     "static/media/Montserrat-Regular.woff2": "/LeaseWheels/static/media/Montserrat-Regular.fc432875c59da8482816.woff2",
@@ -12,15 +12,15 @@
     "static/media/Manrope-Medium.woff2": "/LeaseWheels/static/media/Manrope-Medium.0b33f41eb1974d58060a.woff2",
     "static/media/sprite.svg": "/LeaseWheels/static/media/sprite.caf539d967359cce485eb8c5d149b557.svg",
     "index.html": "/LeaseWheels/index.html",
-    "main.38340dfa.css.map": "/LeaseWheels/static/css/main.38340dfa.css.map",
-    "main.c3567e21.js.map": "/LeaseWheels/static/js/main.c3567e21.js.map",
+    "main.f767922b.css.map": "/LeaseWheels/static/css/main.f767922b.css.map",
+    "main.1edd23ac.js.map": "/LeaseWheels/static/js/main.1edd23ac.js.map",
     "752.2017870a.chunk.js.map": "/LeaseWheels/static/js/752.2017870a.chunk.js.map",
-    "741.c758c063.chunk.js.map": "/LeaseWheels/static/js/741.c758c063.chunk.js.map",
+    "741.087d8eda.chunk.js.map": "/LeaseWheels/static/js/741.087d8eda.chunk.js.map",
     "496.ac484586.chunk.js.map": "/LeaseWheels/static/js/496.ac484586.chunk.js.map",
     "520.042a901b.chunk.js.map": "/LeaseWheels/static/js/520.042a901b.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.38340dfa.css",
-    "static/js/main.c3567e21.js"
+    "static/css/main.f767922b.css",
+    "static/js/main.1edd23ac.js"
   ]
 }
