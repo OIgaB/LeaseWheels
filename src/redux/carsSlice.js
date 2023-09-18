@@ -12,7 +12,7 @@ const handlePending = (state) => {
     state.isLoading = true;
 }
 
-const handleFulfilledGot = (state, { payload }) => {  // payload - масив об'єктів
+const handleFulfilledGot = (state, { payload }) => {  
     state.isLoading = false;
     state.items = [...state.items, ...payload];
 }
@@ -34,8 +34,6 @@ const carsSlice = createSlice({
         builder
             .addCase(getAllCars.fulfilled, handleFulfilledGot)
             .addCase(getCarByID.fulfilled, handleFulfilledGotByID)
-            // .addCase(addContact.fulfilled, handleFulfilledAdded)
-            // .addCase(deleteContact.fulfilled, handleFulfilledDeleted)
             //спільні ф-ції обробки стану pending/rejected:
             .addMatcher(action => action.type.endsWith('/pending'), handlePending)
             .addMatcher(action => action.type.endsWith('/rejected'), handleRejected);

@@ -17,7 +17,7 @@ const favoriteSlice = createSlice({
         removeFromFavorite(state, { payload }) {
             const index = state.favoriteCars.findIndex(car => car.id === payload);
             state.favoriteCars.splice(index, 1); 
-        }, // або  state.favoriteArray.filter((car) => car.id !== action.payload);
+        }, // або  state.favoriteCars.filter((car) => car.id !== action.payload);
     }, 
 });
 

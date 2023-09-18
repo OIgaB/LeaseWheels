@@ -34,28 +34,3 @@ export const getCarByID = createAsyncThunk(
         }
     }
 );
-
-// export const addContact = createAsyncThunk(
-//     'contacts/addContact',
-//     async (newContact, { rejectWithValue}) => { 
-//         try {
-//             const data = await postContact(newContact);
-//             // console.log(newContact);
-//             return data; 
-//         } catch (error) {
-//             return rejectWithValue(error.message);
-//         }
-//     }
-// );
-
-// export const deleteContact = createAsyncThunk(
-//     'contacts/deleteContact',
-//     async (contactId, { rejectWithValue}) => { 
-//         try {
-//             const data = await excludeContact(contactId);
-//             return data; 
-//         } catch (error) {
-//             return rejectWithValue(error.message);
-//         }
-//     }
-// );
