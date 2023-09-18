@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getAllCars, getCarByID } from './carsOperations';
+import { getAllCars, getCarsPerPage, getCarByID } from './carsOperations';
 
 const initialState = {   
     items: [],
@@ -12,7 +12,12 @@ const handlePending = (state) => {
     state.isLoading = true;
 }
 
-const handleFulfilledGot = (state, { payload }) => {  
+const handleFulfilledGotAll = (state, { payload }) => {  
+    state.isLoading = false;
+    state.items = payload;
+}
+
+const handleFulfilledGotPerPage = (state, { payload }) => {  
     state.isLoading = false;
     state.items = [...state.items, ...payload];
 }
@@ -32,7 +37,8 @@ const carsSlice = createSlice({
     initialState,
     extraReducers: (builder) => {
         builder
-            .addCase(getAllCars.fulfilled, handleFulfilledGot)
+            .addCase(getAllCars.fulfilled, handleFulfilledGotAll)
+            .addCase(getCarsPerPage.fulfilled, handleFulfilledGotPerPage)
             .addCase(getCarByID.fulfilled, handleFulfilledGotByID)
             //спільні ф-ції обробки стану pending/rejected:
             .addMatcher(action => action.type.endsWith('/pending'), handlePending)

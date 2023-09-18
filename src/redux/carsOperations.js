@@ -3,9 +3,20 @@ import axios from 'axios';
 
 axios.defaults.baseURL = 'https://649088271e6aa71680cb6b00.mockapi.io/';
 
-
 export const getAllCars = createAsyncThunk(
-    'cars/getAll',
+    'cars/getAllCars',
+    async (_, { rejectWithValue}) => { 
+        try {
+            const { data } = await axios.get('/adverts');
+            return data;
+        } catch (error) {
+            return rejectWithValue(error.message);
+        }
+    }
+);
+
+export const getCarsPerPage = createAsyncThunk(
+    'cars/getCars',
     async (page, { rejectWithValue}) => { 
         try {
             const limit = 8; 
@@ -23,11 +34,10 @@ export const getAllCars = createAsyncThunk(
 );
 
 export const getCarByID = createAsyncThunk(
-    'cars/getCard',
+    'cars/getCar',
     async (id, { rejectWithValue}) => { 
         try {
             const { data } = await axios.get(`/adverts?id=${id}`);
-            // console.log('data in operation:', data[0])
             return data[0];
         } catch (error) {
             return rejectWithValue(error.message);

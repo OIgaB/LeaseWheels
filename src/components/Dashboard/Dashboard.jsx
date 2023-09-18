@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { selectCars } from "../../redux/selectors";
-import { getAllCars } from "redux/carsOperations";
+import { getCarsPerPage } from "redux/carsOperations";
 import { Card } from '../Card';
 import { Loader } from "../Loader";
 import scss from '../../styles/index.module.scss';
@@ -17,7 +17,7 @@ const Dashboard = () => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(getAllCars(currentPage)); // fetch for the next 8 cars
+        dispatch(getCarsPerPage(currentPage)); // fetch for the next 8 cars
 
     }, [currentPage, dispatch]);
 
