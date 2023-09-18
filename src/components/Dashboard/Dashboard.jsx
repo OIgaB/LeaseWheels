@@ -12,7 +12,6 @@ const Dashboard = () => {
     const [allCars, setAllCars] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
 
-
     const { items: cars, isLoading, error } = useSelector(selectCars);
 
     const dispatch = useDispatch();

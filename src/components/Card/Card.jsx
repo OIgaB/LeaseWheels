@@ -6,7 +6,9 @@ import { addToFavorite } from '../../redux/favoriteSlice'
 import SvgSprite from '../../images/sprite.svg';
 import scss from '../../styles/index.module.scss';
 
-const Card = ({ car: {id, img, make, model, year, rentalPrice, address, rentalCompany, type,  functionalities} }) => {
+const Card = ({ car }) => {
+    const { id, img, make, model, year, rentalPrice, address, rentalCompany, type, functionalities } = car;
+
     const dispatch = useDispatch();
     
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -30,25 +32,20 @@ const Card = ({ car: {id, img, make, model, year, rentalPrice, address, rentalCo
     };
 
     return ( 
-        <div >
-            <li key={id} className={scss.listCard}>
-                <div className={scss.pictureContainer}>
-                    <img 
-                        className={scss.picture} 
-                        src={img}
-                        alt={make}
-                    />    
-                    <button
-                        type="button"
-                        className={scss.iconHeartBtn}
-                        aria-label="heart"
-                        onClick={() => dispatch(addToFavorite(id))}
-                    >
-                        <svg width="18" height="18">
-                            <use href={SvgSprite + '#icon-heart'} />
-                        </svg>
-                    </button>                              
-                </div>
+        <li className={scss.listCard}> 
+            <div className={scss.pictureContainer}>
+                <img className={scss.picture} src={img} alt={make} />    
+                <button
+                    type="button"
+                    className={scss.iconHeartBtn}
+                    aria-label="heart"
+                    onClick={() => dispatch(addToFavorite(car))}
+                >
+                    <svg width="18" height="18">
+                        <use href={SvgSprite + '#icon-heart'} />
+                    </svg>
+                </button>                              
+            </div>
                 <div className={scss.cardHeaderPrice}>
                     <p>{make} <span style={{color: '#3470FF'}}>{handleModel(make, model)}</span>, {year}</p>
                     <p>{rentalPrice}</p>                                
@@ -68,8 +65,7 @@ const Card = ({ car: {id, img, make, model, year, rentalPrice, address, rentalCo
                         <DetailedCard id={id} />
                     </Modal>
                 )}                              
-            </li>         
-        </div>
+        </li>          
     );
 }
 

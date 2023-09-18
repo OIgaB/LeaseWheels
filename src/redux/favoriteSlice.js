@@ -7,8 +7,10 @@ const favoriteSlice = createSlice({
     },
     reducers: {
         addToFavorite: (state, { payload }) => {
-            state.favoriteCars.push(payload);
+            state.favoriteCars = [...state.favoriteCars, payload];
+            // або state.favoriteCars.push(payload);
         },
+
         removeFromFavorite(state, { payload }) {
             const index = state.favoriteCars.findIndex(car => car.id === payload);
             state.favoriteCars.splice(index, 1); 
