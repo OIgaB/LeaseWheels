@@ -6,7 +6,7 @@ import SvgSprite from '../../images/sprite.svg';
 
 const modalRoot = document.querySelector('#modal-root');
 
-const Modal = ({ onClose, children }) => {
+const Modal = ({ isOpen, onClose, children }) => {
 
    useEffect(() => {
 
@@ -30,7 +30,7 @@ const Modal = ({ onClose, children }) => {
       };
    };
 
-   document.body.style.overflow = 'hidden';  
+   document.body.style.overflow = 'hidden'; 
 
    return (
       createPortal(<div className={scss.overlay} onClick={handleBackdropClick}>

@@ -30,6 +30,7 @@ const Card = ({ car }) => {
     
     const handleCloseModal = () => {
         setIsModalOpen(false);
+        document.body.style.overflow = 'visible'; 
     };
 
     const handleButtonClick = (car) => {
@@ -77,7 +78,7 @@ const Card = ({ car }) => {
                     Learn more
                 </button>
                 {isModalOpen && (
-                    <Modal onClose={handleCloseModal}>
+                    <Modal isOpen={isModalOpen} onClose={handleCloseModal}>
                         <DetailedCard id={id} />
                     </Modal>
                 )}                              

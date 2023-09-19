@@ -120,7 +120,7 @@ useEffect(() => {
       mileageFrom: mileageValueFrom, 
       mileageTo: mileageValueTo, 
     };
-    console.log(filterData);
+    // console.log(filterData);
 
     dispatch(getFilterData(filterData));
   };
