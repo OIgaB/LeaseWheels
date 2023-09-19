@@ -1,6 +1,6 @@
 .sidebarContainer {
     position: relative;
-    width: 1090px;
+    width: 1150px;
     height: 74px;
     display: flex;
     margin: 30px auto 30px auto;
@@ -16,7 +16,6 @@
     font-size: 14px;
     line-height: 18px;
     color: #8A8A89;
-    border: none;
     background-color: transparent;
     border: none;
     fill: transparent;
@@ -189,6 +188,27 @@
     background-color: #3470FF;
     &:hover,
     &:focus {
-        background-color: #0B44CD;
+        background-color: #3470FF;
     }
+}
+
+.resetBtn {
+    width: 45px;
+    height: 45px;
+    padding: 0;
+    display: flex;
+    margin-top: auto;
+    margin-bottom: 7px;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    border-radius: 40%;
+    background-color: transparent;
+    stroke: #3470FF;  
+    transition: $transition;
+  &:hover,
+  &:focus {
+    transform: scale(1.1);
+    background-color: #c4d3f831;
+  }  
 }

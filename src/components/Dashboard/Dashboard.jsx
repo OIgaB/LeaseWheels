@@ -14,6 +14,7 @@ const Dashboard = () => {
     const [carsPerPage, setCarsPerPage] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
 
+    console.log(carsForPage)
     useEffect(() => {
         dispatch(getCarsPerPage(currentPage)); // fetch 8 cars
     }, [currentPage, dispatch]);
@@ -66,7 +67,7 @@ const Dashboard = () => {
       });
     
 
-    console.log(filteredCars);
+    // console.log(filteredCars);
 
 
 

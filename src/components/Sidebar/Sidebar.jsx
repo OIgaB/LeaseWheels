@@ -120,12 +120,19 @@ useEffect(() => {
       mileageFrom: mileageValueFrom, 
       mileageTo: mileageValueTo, 
     };
-
     console.log(filterData);
 
     dispatch(getFilterData(filterData));
-    e.target.reset();
+
+    setSelectedBrand('');
+    setSelectedPriceUI('');
+    setMileageValueFromUI('');
+    setMileageValueToUI('');
   };
+
+  const handleReset = () => {
+    dispatch(getFilterData({}));
+  }
 
     return (
       <div className={scss.sidebarContainer}> 
@@ -237,6 +244,11 @@ useEffect(() => {
            
         <button type="submit" className={scss.submitBtn}>Search</button>
         </form>
+        <button type="button" onClick={handleReset} className={scss.resetBtn}>
+            <svg width="40" height="40">
+                <use href={SvgSprite + '#icon-reset'} />
+            </svg>
+        </button>
          <button
             type="button"
             className={`${scss.sidebarIcon} ${scss.sidebarIconRightBtn}`}
