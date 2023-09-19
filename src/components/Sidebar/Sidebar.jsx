@@ -123,15 +123,14 @@ useEffect(() => {
     console.log(filterData);
 
     dispatch(getFilterData(filterData));
-
-    setSelectedBrand('');
-    setSelectedPriceUI('');
-    setMileageValueFromUI('');
-    setMileageValueToUI('');
   };
 
   const handleReset = () => {
     dispatch(getFilterData({}));
+    setSelectedBrand('');
+    setSelectedPriceUI('');
+    setMileageValueFromUI('');
+    setMileageValueToUI('');
   }
 
     return (

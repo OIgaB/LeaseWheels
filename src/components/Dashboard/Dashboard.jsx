@@ -14,7 +14,6 @@ const Dashboard = () => {
     const [carsPerPage, setCarsPerPage] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
 
-    console.log(carsForPage)
     useEffect(() => {
         dispatch(getCarsPerPage(currentPage)); // fetch 8 cars
     }, [currentPage, dispatch]);
@@ -51,16 +50,16 @@ const Dashboard = () => {
     }
     
     const filteredCars = allCars.filter((car) => {
-        if (car.make !== brand) {
+        if (brand && car.make !== brand) { // && - if not empty/undefined
           return false;
         }
-        if (car.rentalPrice.slice(1) > price) {
+        if (price && car.rentalPrice.slice(1) > price) {
           return false;
         }
-        if (car.mileage < mileageFrom) {
+        if (mileageFrom && car.mileage < mileageFrom) {
           return false;
         }
-        if (car.mileage > mileageTo) {
+        if (mileageTo && car.mileage > mileageTo) {
             return false;
         }
         return true;
