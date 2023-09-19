@@ -1,9 +1,9 @@
 {
   "files": {
     "main.css": "/LeaseWheels/static/css/main.1af98cbb.css",
-    "main.js": "/LeaseWheels/static/js/main.0cd5f9f5.js",
+    "main.js": "/LeaseWheels/static/js/main.273835d6.js",
     "static/js/752.2e2015c4.chunk.js": "/LeaseWheels/static/js/752.2e2015c4.chunk.js",
-    "static/js/999.9a9e8bb0.chunk.js": "/LeaseWheels/static/js/999.9a9e8bb0.chunk.js",
+    "static/js/999.5da17d61.chunk.js": "/LeaseWheels/static/js/999.5da17d61.chunk.js",
     "static/js/496.94e92eea.chunk.js": "/LeaseWheels/static/js/496.94e92eea.chunk.js",
     "static/js/520.ff285eac.chunk.js": "/LeaseWheels/static/js/520.ff285eac.chunk.js",
     "static/media/Montserrat-Regular.woff2": "/LeaseWheels/static/media/Montserrat-Regular.fc432875c59da8482816.woff2",
@@ -13,14 +13,14 @@
     "static/media/sprite.svg": "/LeaseWheels/static/media/sprite.6fc6b1cf0816b8ffbd2898ca9f832139.svg",
     "index.html": "/LeaseWheels/index.html",
     "main.1af98cbb.css.map": "/LeaseWheels/static/css/main.1af98cbb.css.map",
-    "main.0cd5f9f5.js.map": "/LeaseWheels/static/js/main.0cd5f9f5.js.map",
+    "main.273835d6.js.map": "/LeaseWheels/static/js/main.273835d6.js.map",
     "752.2e2015c4.chunk.js.map": "/LeaseWheels/static/js/752.2e2015c4.chunk.js.map",
-    "999.9a9e8bb0.chunk.js.map": "/LeaseWheels/static/js/999.9a9e8bb0.chunk.js.map",
+    "999.5da17d61.chunk.js.map": "/LeaseWheels/static/js/999.5da17d61.chunk.js.map",
     "496.94e92eea.chunk.js.map": "/LeaseWheels/static/js/496.94e92eea.chunk.js.map",
     "520.ff285eac.chunk.js.map": "/LeaseWheels/static/js/520.ff285eac.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.1af98cbb.css",
-    "static/js/main.0cd5f9f5.js"
+    "static/js/main.273835d6.js"
   ]
 }
