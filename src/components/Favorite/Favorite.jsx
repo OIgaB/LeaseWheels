@@ -1,11 +1,10 @@
-import { useSelector } from "react-redux";
 import { NavLink } from 'react-router-dom';
-import { selectFavoriteCars } from "../../redux/selectors";
+import { useCars } from '../hooks/index';
 import scss from '../../styles/index.module.scss';
 import { Card } from '../Card';
 
 const Favorite = () => {
-    const favoriteCars = useSelector(selectFavoriteCars);
+    const { favoriteCars} = useCars();
 
     return (
         <div className={scss.dashbordContainer}>

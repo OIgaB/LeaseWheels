@@ -1,9 +1,9 @@
 import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { useCars } from "../hooks/index";
 import { Modal } from "../Modal";
 import { DetailedCard } from "../DetailedCard";
 import { addToFavorite, removeFromFavorite } from '../../redux/favoriteSlice';
-import { selectFavoriteCars } from '../../redux/selectors';
 import SvgSprite from '../../images/sprite.svg';
 import scss from '../../styles/index.module.scss';
 
@@ -12,7 +12,7 @@ const Card = ({ car }) => {
 
     const dispatch = useDispatch();
     const [isModalOpen, setIsModalOpen] = useState(false);
-    const favoriteCars = useSelector(selectFavoriteCars);
+    const { favoriteCars } = useCars();
 
     const handleAddress = (address) => {
         const parts = address.split(',').map(part => part.trim());

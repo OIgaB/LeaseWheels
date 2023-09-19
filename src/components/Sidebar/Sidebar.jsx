@@ -1,20 +1,26 @@
 import { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from "react-redux";
-import { selectCars } from "../../redux/selectors";
+import { useDispatch } from "react-redux";
+import { NavLink } from 'react-router-dom';
+import { getAllCars } from "../../redux/carsOperations";
+import { useCars } from '../hooks/index';
 import { getFilterData } from '../../redux/filterSlice';
 import scss from '../../styles/index.module.scss';
 import SvgSprite from '../../images/sprite.svg';
-import { NavLink } from 'react-router-dom';
 
 
 const Sidebar = () => {
-  const { items: cars } = useSelector(selectCars); 
+  const dispatch = useDispatch();
+  const { allCars } = useCars();
 
-  const largestPrice = cars.reduce((acc, { rentalPrice }) => { // "$500"
+  useEffect(() => {
+    dispatch(getAllCars()); 
+  }, [dispatch]);
+
+  const largestPrice = allCars.reduce((acc, { rentalPrice }) => { // "$500"
     return Number(rentalPrice.slice(1)) > Number(acc) ? rentalPrice.slice(1) : acc; 
   }, 0); 
 
-  const smallestPrice = cars.reduce((acc, { rentalPrice }) => { // "$25"
+  const smallestPrice = allCars.reduce((acc, { rentalPrice }) => { // "$25"
     return Number(rentalPrice.slice(1)) > Number(acc) ? acc  : rentalPrice.slice(1); 
   }, largestPrice); 
   
@@ -25,9 +31,7 @@ const Sidebar = () => {
     prices.push(i);
   }
 
-  const uniqueBrands = cars.flatMap(car => car.make).filter((make, index, array) => array.indexOf(make) === index).sort((a, b) => a.localeCompare(b));
-
-  const dispatch = useDispatch();
+  const uniqueBrands = allCars.flatMap(car => car.make).filter((make, index, array) => array.indexOf(make) === index).sort((a, b) => a.localeCompare(b));
 
   const [selectedBrand, setSelectedBrand] = useState('');
   const [isOpenBrands, setIsOpenBrands] = useState(false);  
@@ -105,20 +109,11 @@ useEffect(() => {
     setMileageValueToUI(Number(valueWithNoCommas).toLocaleString('en-US'));  
   };
 
-  //------------------------------Submit-------------------------------------
+//   //------------------------------Submit-------------------------------------
 
   const handleFormSearch = (e) => {
     e.preventDefault();
 
-    console.log('selectedBrand:', selectedBrand);
-    console.log('selectedPrice:', selectedPrice);
-    console.log('mileageValueFrom:', mileageValueFrom);
-    console.log('mileageValueTo:', mileageValueTo);
-
-    // console.log('selectedPriceUI:', selectedPriceUI);
-    // console.log('mileageValueFromUI:', mileageValueFromUI);
-    // console.log('mileageValueToUI:', mileageValueToUI);
-    
     const filterData = {
       brand: selectedBrand, 
       price: selectedPrice,  
@@ -126,11 +121,11 @@ useEffect(() => {
       mileageTo: mileageValueTo, 
     };
 
-    dispatch(getFilterData(filterData));
+    console.log(filterData);
 
+    dispatch(getFilterData(filterData));
     e.target.reset();
   };
-
 
     return (
       <div className={scss.sidebarContainer}> 
@@ -148,101 +143,101 @@ useEffect(() => {
         </button>      
 
         <form onSubmit={handleFormSearch} className={scss.sidebarForm}>
-          <div className={scss.inputContainer}>
-            <label htmlFor="brand" className={scss.label}>Car brand</label>
-            <input
-              type="text"
-              name='brand'
-              id='brand'
-              placeholder="Enter the text"
-              value={selectedBrand}
-              onChange={(e) => setSelectedBrand(e.target.value)}
-              className={`${scss.input} ${scss.customBrandInput}`}
-            />
-            <button
-              type="button"
-              className={scss.iconBtn}
-              aria-label="arrow"
-              onClick={() => setIsOpenBrands(!isOpenBrands)}
-            >
-              <svg width="20" height="20">
-                <use href={SvgSprite + '#icon-chevron-down'} />
-              </svg>
-            </button>
+           <div className={scss.inputContainer}>
+             <label htmlFor="brand" className={scss.label}>Car brand</label>
+               <input
+                 type="text"
+                 name='brand'
+                 id='brand'
+                 placeholder="Enter the text"
+                 value={selectedBrand}
+                 onChange={(e) => setSelectedBrand(e.target.value)}
+                 className={`${scss.input} ${scss.customBrandInput}`}
+               />
+               <button
+                 type="button"
+                 className={scss.iconBtn}
+                 aria-label="arrow"
+                 onClick={() => setIsOpenBrands(!isOpenBrands)}
+               >
+                 <svg width="20" height="20">
+                   <use href={SvgSprite + '#icon-chevron-down'} />
+                 </svg>
+               </button>
 
-          {isOpenBrands && (
-            <ul className={`${scss.dropdown} ${scss.bransList}`}>
-              {filteredOptions.map((option) => (
-                <li key={option} onClick={() => handleBrandOptionSelect(option)} className={`${scss.listItem} ${scss.brandslistItem}`}>
-                  {option}
-                </li>
-              ))}
-            </ul>
-          )}
-        </div>
+             {isOpenBrands && (
+               <ul className={`${scss.dropdown} ${scss.bransList}`}>
+                 {filteredOptions.map((option) => (
+                   <li key={option} onClick={() => handleBrandOptionSelect(option)} className={`${scss.listItem} ${scss.brandslistItem}`}>
+                     {option}
+                   </li>
+                 ))}
+               </ul>
+             )}
+           </div>
       
 
-        <div className={scss.inputContainer}>
-          <label htmlFor="price" className={scss.label}>Price/ 1 hour</label>
-          <input
-            type="text"
-            name='price'
-            id='price'
-            placeholder="To $"
-            value={selectedPriceUI}
-            onChange={(e) => setSelectedPrice(e.target.value)}
-            className={`${scss.input} ${scss.customPriceInput}`}
-          />
-            <button
-              type="button"
-              className={scss.iconBtn}
-              aria-label="arrow"
-              onClick={() => setIsOpenPrices(!isOpenPrices)}
-            >
-              <svg width="20" height="20">
-                <use href={SvgSprite + '#icon-chevron-down'} />
-              </svg>
-            </button>
+           <div className={scss.inputContainer}>
+             <label htmlFor="price" className={scss.label}>Price/ 1 hour</label>
+             <input
+               type="text"
+               name='price'
+               id='price'
+               placeholder="To $"
+               value={selectedPriceUI}
+               onChange={(e) => setSelectedPrice(e.target.value)}
+               className={`${scss.input} ${scss.customPriceInput}`}
+             />
+              <button
+                className={scss.iconBtn}
+                aria-label="arrow"
+                type="button"
+                onClick={() => setIsOpenPrices(!isOpenPrices)}
+              >
+                <svg width="20" height="20">
+                  <use href={SvgSprite + '#icon-chevron-down'} />
+                </svg>
+              </button>
         
-          {isOpenPrices && (
-            <ul className={`${scss.dropdown} ${scss.pricesList}`}>
-              {prices.map((option) => (
-                <li key={option} onClick={() => handlePriceOptionSelect(option)} className={`${scss.listItem} ${scss.priceslistItem}`}>
-                  {option}
-                </li>
-              ))}
-            </ul>
-          )}
-        </div>
+             {isOpenPrices && (
+               <ul className={`${scss.dropdown} ${scss.pricesList}`}>
+                 {prices.map((option) => (
+                   <li key={option} onClick={() => handlePriceOptionSelect(option)} className={`${scss.listItem} ${scss.priceslistItem}`}>
+                     {option}
+                   </li>
+                 ))}
+               </ul>
+             )}
+           </div>
 
-        <div className={scss.inputContainer}>
-          <label htmlFor="price" className={scss.label}>Сar mileage / km</label>
-          <div className={scss.inputMileageContainer}>
-            <input 
-              type="text" 
-              id='mileage'
-              name="mileageFrom" 
-              placeholder="From"
-              value={mileageValueFromUI} 
-              onChange={hadleMileageValueFromChange} 
-              className={`${scss.input} ${scss.customMileageInputLeft}`}
-            />
-            <input 
-              type="text" 
-              id='mileage'
-              name="mileageTo" 
-              placeholder="To"
-              value={mileageValueToUI} 
-              onChange={hadleMileageValueToChange} 
-              className={`${scss.input} ${scss.customMileageInputRight}`}
-            />             
-          </div> 
-          {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}   
-        </div>    
+           <div className={scss.inputContainer}>
+             <label htmlFor="price" className={scss.label}>Сar mileage / km</label>
+             <div className={scss.inputMileageContainer}>
+               <input 
+                 type="text" 
+                 id='mileage'
+                 name="mileageFrom" 
+                 placeholder="From"
+                 value={mileageValueFromUI} 
+                 onChange={hadleMileageValueFromChange} 
+                 className={`${scss.input} ${scss.customMileageInputLeft}`}
+               />
+               <input 
+                 type="text" 
+                 id='mileage'
+                 name="mileageTo" 
+                 placeholder="To"
+                 value={mileageValueToUI} 
+                 onChange={hadleMileageValueToChange} 
+                 className={`${scss.input} ${scss.customMileageInputRight}`}
+               />             
+             </div> 
+             {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}   
+           </div>    
            
         <button type="submit" className={scss.submitBtn}>Search</button>
         </form>
-        <button
+         <button
             type="button"
             className={`${scss.sidebarIcon} ${scss.sidebarIconRightBtn}`}
             aria-label="arrow-left"
@@ -258,4 +253,4 @@ useEffect(() => {
   );
 };
   
-  export default Sidebar;
+export default Sidebar;

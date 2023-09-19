@@ -3,6 +3,7 @@ import axios from 'axios';
 
 axios.defaults.baseURL = 'https://649088271e6aa71680cb6b00.mockapi.io/';
 
+
 export const getAllCars = createAsyncThunk(
     'cars/getAllCars',
     async (_, { rejectWithValue}) => { 

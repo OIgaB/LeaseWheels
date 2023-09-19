@@ -1,36 +1,44 @@
 import { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { selectCars } from "../../redux/selectors";
-import { getCarsPerPage } from "redux/carsOperations";
+import { useDispatch } from "react-redux";
+import { getCarsPerPage } from "../../redux/carsOperations";
+import { useCars } from '../hooks/index';
 import { Card } from '../Card';
 import { Loader } from "../Loader";
 import scss from '../../styles/index.module.scss';
 
 
-
 const Dashboard = () => {
-    const [allCars, setAllCars] = useState([]);
+    const dispatch = useDispatch();
+    const { allCars, carsForPage, isLoading, error, brand, price, mileageFrom, mileageTo } = useCars();
+
+    const [carsPerPage, setCarsPerPage] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
 
-    const { items: cars, isLoading, error } = useSelector(selectCars);
-
-    const dispatch = useDispatch();
-
     useEffect(() => {
-        dispatch(getCarsPerPage(currentPage)); // fetch for the next 8 cars
-
+        dispatch(getCarsPerPage(currentPage)); // fetch 8 cars
     }, [currentPage, dispatch]);
 
     useEffect(() => {
-        if (cars.length > 0) {
-            setAllCars((prevCars) => {
-                const uniqueNewCars = cars.filter((car) => {
-                    return !prevCars.some((prevCar) => prevCar.id === car.id);
-                });
-                return [...prevCars, ...uniqueNewCars];
+        if (carsForPage.length > 0) {
+            setCarsPerPage((prevCars) => {
+                const mergedCars = [...prevCars];
+    
+                for (const newCar of carsForPage) {
+                    const existingCarIndex = mergedCars.findIndex((car) => car.id === newCar.id); // ensures no duplication of data
+    
+                    if (existingCarIndex === -1) {
+                        mergedCars.push(newCar);
+                    }
+                }
+                return mergedCars;
             });
         }
-    }, [cars]);
+    }, [carsForPage]);
+
+    useEffect(() => {
+        setCarsPerPage([]);
+    }, [allCars]);
+
 
     if(currentPage !== 1) {
         setTimeout(() => {
@@ -40,21 +48,46 @@ const Dashboard = () => {
         });
         }, 150);
     }
+    
+    const filteredCars = allCars.filter((car) => {
+        if (car.make !== brand) {
+          return false;
+        }
+        if (car.rentalPrice.slice(1) > price) {
+          return false;
+        }
+        if (car.mileage < mileageFrom) {
+          return false;
+        }
+        if (car.mileage > mileageTo) {
+            return false;
+        }
+        return true;
+      });
+    
+
+    console.log(filteredCars);
+
+
 
     return (          
         <> 
-        {isLoading && <Loader />}
-        {error && <p>Sorry, data has not loaded.</p>}
+        {(isLoading && !error) && <Loader />}
         <div className={scss.dashbordContainer}>
             <ul className={scss.dashbordList}>
-                {allCars.length > 0 && (
-                    allCars.map((car) => (
+                {filteredCars.length > 0 ? (
+                    filteredCars.map((car) => (
                         <Card key={car.id} car={car} />                           
                     ))
+                ) : (
+                    carsPerPage.length > 0 && (
+                        carsPerPage.map((car) => (
+                            <Card key={car.id} car={car} />                           
+                        ))
+                    )
                 )}
             </ul>
-
-            {(allCars.length !== 0 && currentPage !== 4) && 
+            {(filteredCars.length === 0 && carsPerPage.length > 0 && currentPage !== 4) && 
                 <button 
                     type="button" 
                     onClick={() => setCurrentPage((prevPage) => prevPage + 1)} 
@@ -62,8 +95,8 @@ const Dashboard = () => {
                 >
                     Load more
                 </button>
-            }
-            {currentPage === 4 && <p className={scss.collectionEnd}>You've reached the end of search results.</p>} 
+            } 
+            {filteredCars.length === 0 && currentPage === 4 && <p className={scss.collectionEnd}>You've reached the end of search results.</p>} 
         </div>
         </>   
     );

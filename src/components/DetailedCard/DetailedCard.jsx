@@ -1,19 +1,19 @@
 import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { selectCarById } from "../../redux/selectors";
+import { useDispatch } from "react-redux";
+import { useCars } from "../hooks/index";
 import { getCarByID } from "../../redux/carsOperations";
 import scss from '../../styles/index.module.scss';
 
 
 const DetailedCard = ({ id }) => {
-
     const dispatch = useDispatch();
+    const { carById } = useCars();
 
     useEffect(() => {
         dispatch(getCarByID(id)); 
     }, [id, dispatch]);
 
-    const {id: carId, img, make, model, year, rentalPrice, address, type, accessories, functionalities, fuelConsumption, engineSize, description, rentalConditions, mileage } = useSelector(selectCarById);
+    const {id: carId, img, make, model, year, rentalPrice, address, type, accessories, functionalities, fuelConsumption, engineSize, description, rentalConditions, mileage } = carById;
     
 
     const addressArray = address ? address.split(',') : [];

@@ -1,8 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { getAllCars, getCarsPerPage, getCarByID } from './carsOperations';
 
-const initialState = {   
-    items: [],
+const initialState = { 
+    allItems: [],  
+    itemsPerPage: [],
     itemById: {},
     isLoading: false,
     error: null,
@@ -14,12 +15,12 @@ const handlePending = (state) => {
 
 const handleFulfilledGotAll = (state, { payload }) => {  
     state.isLoading = false;
-    state.items = payload;
+    state.allItems = payload;
 }
 
 const handleFulfilledGotPerPage = (state, { payload }) => {  
     state.isLoading = false;
-    state.items = [...state.items, ...payload];
+    state.itemsPerPage = [...state.itemsPerPage, ...payload];
 }
 
 const handleFulfilledGotByID = (state, { payload }) => {
