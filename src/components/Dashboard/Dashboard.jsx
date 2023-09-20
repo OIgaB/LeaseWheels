@@ -5,6 +5,7 @@ import { useCars } from '../hooks/index';
 import { Card } from '../Card';
 import { Loader } from "../Loader";
 import scss from '../../styles/index.module.scss';
+import { string } from "i/lib/util";
 
 
 const Dashboard = () => {
@@ -13,7 +14,7 @@ const Dashboard = () => {
 
     const [carsPerPage, setCarsPerPage] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
-    const [notificationVisible, setNotificationVisible] = useState(false);
+    // const [notificationVisible, setNotificationVisible] = useState(false);
 
     useEffect(() => {
         dispatch(getCarsPerPage(currentPage)); // fetch 8 cars
@@ -36,11 +37,6 @@ const Dashboard = () => {
         }
     }, [carsForPage]);
 
-    useEffect(() => {
-        setCarsPerPage([]);
-    }, [allCars]);
-
-
     if(currentPage !== 1) {
         setTimeout(() => {
           window.scrollBy({
@@ -50,31 +46,33 @@ const Dashboard = () => {
         }, 150);
     }
     
-    const filteredCars = allCars.filter((car) => {
-        if (brand && car.make !== brand) { // && - if not empty/undefined
-          return false;
-        }
-        if (price && car.rentalPrice.slice(1) > price) {
-          return false;
-        }
-        if (mileageFrom && car.mileage < mileageFrom) {
-          return false;
-        }
-        if (mileageTo && car.mileage > mileageTo) {
-            return false;
-        }
-        return true;
-      });
+    let filteredCars = [];
 
-    // console.log(filteredCars);
+    if(brand !== '' || price !== '' || mileageFrom !== '' || mileageTo !== '') {
+        filteredCars = allCars.filter((car) => {
+            if (brand && car.make !== brand) { // && - if not empty/undefined
+            return false;
+            }
+            if (price && car.rentalPrice.slice(1) > price) {
+            return false;
+            }
+            if (mileageFrom && car.mileage < mileageFrom) {
+            return false;
+            }
+            if (mileageTo && car.mileage > mileageTo) {
+                return false;
+            }
+            return true;
+        });       
+    } else {
+        filteredCars = [];
+    }
 
     useEffect(() => {
-        if (filteredCars.length === 0) {
-          setNotificationVisible(true);
-        } else {
-          setNotificationVisible(false);
-        }
-    }, [filteredCars]);
+        if (brand !== '' || price !== '' || mileageFrom !== '' || mileageTo !== '') {
+            setCarsPerPage([]);
+        } 
+    }, [allCars, brand, price, mileageFrom, mileageTo]);
 
     return (          
         <> 
@@ -87,9 +85,9 @@ const Dashboard = () => {
                     ))}
                 </ul>
                 ) : (
-                    notificationVisible ? (
-                        <p className={scss.noData}>No matches found.</p>
-                ) : (
+                //     notificationVisible ? (
+                //         <p className={scss.noData}>No matches found.</p>
+                // ) : (
                     carsPerPage.length > 0 && (
                         <ul className={scss.dashbordList}>
                             {carsPerPage.map((car) => (
@@ -97,9 +95,9 @@ const Dashboard = () => {
                             ))}
                         </ul>
                     )
-                )
+                // )
             )}    
-            {(filteredCars.length === 0 && carsPerPage.length > 0 && currentPage !== 4 && !notificationVisible) && 
+            {(filteredCars.length === 0 && carsPerPage.length > 0 && currentPage !== 4 /*&& !notificationVisible*/) && 
                 <button 
                     type="button" 
                     onClick={() => setCurrentPage((prevPage) => prevPage + 1)} 

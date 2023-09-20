@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useDispatch } from "react-redux";
 import { NavLink } from 'react-router-dom';
-import { getAllCars } from "../../redux/carsOperations";
+import { getAllCars, getCarsPerPage } from "../../redux/carsOperations";
 import { useCars } from '../hooks/index';
 import { getFilterData } from '../../redux/filterSlice';
 import scss from '../../styles/index.module.scss';
@@ -127,6 +127,7 @@ useEffect(() => {
 
   const handleReset = () => {
     dispatch(getFilterData({}));
+    dispatch(getCarsPerPage(1));
     setSelectedBrand('');
     setSelectedPriceUI('');
     setMileageValueFromUI('');
