@@ -13,6 +13,7 @@ const Dashboard = () => {
 
     const [carsPerPage, setCarsPerPage] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
+    const [notificationVisible, setNotificationVisible] = useState(false);
 
     useEffect(() => {
         dispatch(getCarsPerPage(currentPage)); // fetch 8 cars
@@ -64,39 +65,50 @@ const Dashboard = () => {
         }
         return true;
       });
-    
 
     // console.log(filteredCars);
 
-
+    useEffect(() => {
+        if (filteredCars.length === 0) {
+          setNotificationVisible(true);
+        } else {
+          setNotificationVisible(false);
+        }
+    }, [filteredCars]);
 
     return (          
         <> 
         {(isLoading && !error) && <Loader />}
         <div className={scss.dashbordContainer}>
-            <ul className={scss.dashbordList}>
-                {filteredCars.length > 0 ? (
-                    filteredCars.map((car) => (
-                        <Card key={car.id} car={car} />                           
-                    ))
+            {filteredCars.length > 0 ? (
+                <ul className={scss.dashbordList}>
+                    {filteredCars.map((car) => (
+                    <Card key={car.id} car={car} />
+                    ))}
+                </ul>
+                ) : (
+                    notificationVisible ? (
+                        <p className={scss.noData}>No matches found.</p>
                 ) : (
                     carsPerPage.length > 0 && (
-                        carsPerPage.map((car) => (
-                            <Card key={car.id} car={car} />                           
-                        ))
+                        <ul className={scss.dashbordList}>
+                            {carsPerPage.map((car) => (
+                                <Card key={car.id} car={car} />
+                            ))}
+                        </ul>
                     )
-                )}
-            </ul>
-            {(filteredCars.length === 0 && carsPerPage.length > 0 && currentPage !== 4) && 
+                )
+            )}    
+            {(filteredCars.length === 0 && carsPerPage.length > 0 && currentPage !== 4 && !notificationVisible) && 
                 <button 
                     type="button" 
                     onClick={() => setCurrentPage((prevPage) => prevPage + 1)} 
                     className={scss.loadMoreBtn}
                 >
-                    Load more
+                Load more
                 </button>
             } 
-            {filteredCars.length === 0 && currentPage === 4 && <p className={scss.collectionEnd}>You've reached the end of search results.</p>} 
+            {filteredCars.length === 0 && currentPage === 4 && <p className={scss.noData}>You've reached the end of search results.</p>} 
         </div>
         </>   
     );
