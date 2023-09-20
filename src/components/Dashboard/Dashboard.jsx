@@ -69,7 +69,6 @@ const Dashboard = () => {
 
 
     if (brand === undefined && price === undefined && mileageFrom === undefined && mileageTo === undefined) {
-        console.log('empty')
         filteredCars = [];
     }  
 

@@ -2,13 +2,14 @@ import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
 import { Sidebar } from '../Sidebar';
 import { Loader } from '../Loader';
+import scss from '../../styles/index.module.scss';
 
 
 
 const SharedLayout = () => {
 
   return (
-    <div>
+    <div style={{width: '1184px', margin: '30px auto' }}>
         <Sidebar />
         <main>
             <Suspense fallback={<Loader />}>
