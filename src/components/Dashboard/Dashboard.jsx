@@ -1,11 +1,10 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { useDispatch } from "react-redux";
 import { getCarsPerPage } from "../../redux/carsOperations";
 import { useCars } from '../hooks/index';
 import { Card } from '../Card';
 import { Loader } from "../Loader";
 import scss from '../../styles/index.module.scss';
-import { string } from "i/lib/util";
 
 
 const Dashboard = () => {
@@ -46,33 +45,34 @@ const Dashboard = () => {
         }, 150);
     }
     
-    let filteredCars = [];
-
-    if(brand !== '' || price !== '' || mileageFrom !== '' || mileageTo !== '') {
-        filteredCars = allCars.filter((car) => {
-            if (brand && car.make !== brand) { // && - if not empty/undefined
-            return false;
+    let filteredCars = useMemo(() => {
+        if (brand !== '' || price !== '' || mileageFrom !== '' || mileageTo !== '') {
+          return allCars.filter((car) => {
+            if (brand && car.make !== brand) {
+              return false;
             }
             if (price && car.rentalPrice.slice(1) > price) {
-            return false;
+              return false;
             }
             if (mileageFrom && car.mileage < mileageFrom) {
-            return false;
+              return false;
             }
             if (mileageTo && car.mileage > mileageTo) {
-                return false;
+              return false;
             }
             return true;
-        });       
-    } else {
-        filteredCars = [];
-    }
+          });
+        } else {
+          return [];
+        }
+      }, [allCars, brand, price, mileageFrom, mileageTo]);
 
-    useEffect(() => {
-        if (brand !== '' || price !== '' || mileageFrom !== '' || mileageTo !== '') {
-            setCarsPerPage([]);
-        } 
-    }, [allCars, brand, price, mileageFrom, mileageTo]);
+
+    if (brand === undefined && price === undefined && mileageFrom === undefined && mileageTo === undefined) {
+        console.log('empty')
+        filteredCars = [];
+    }  
+
 
     return (          
         <> 
