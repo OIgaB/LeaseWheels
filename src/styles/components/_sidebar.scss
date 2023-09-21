@@ -73,9 +73,14 @@
     font-size: 18px;
     line-height: 20px;
     border-color: transparent;
+    outline: none;
     background-color: #F7F7FB;
     &::placeholder {
         color: #121417;
+    }
+    &:hover,
+    &:focus {
+        border: 1px solid rgba(185, 184, 235, 0.685);
     }
 }
 
@@ -87,11 +92,29 @@
 .customPriceInput {
     width: 125px;
     border-radius: 14px;
+    pointer-events: none;
 }
 
 .inputMileageContainer {
+    position: relative;
     display: flex;
     flex-direction: row;
+}
+
+.inputStaticText {
+    position: absolute;
+    top: 13px; 
+    pointer-events: none; 
+    color: #121417;
+    font-family: map-get($fonts, m), sans-serif;
+    font-size: 18px;
+    line-height: 20px;
+    &__left {
+        left: 21px; 
+    }
+    &__right {
+        left: 177px;
+    }
 }
 
 .customMileageInputLeft {
@@ -99,12 +122,14 @@
     border-top-left-radius: 14px;
     border-bottom-left-radius: 14px;
     border-right: 1px solid rgba(138, 138, 137, 0.2);
+    padding-left: 68px;
 }
 
 .customMileageInputRight {
     width: 160px;
     border-top-right-radius: 14px;
     border-bottom-right-radius: 14px;
+    padding-left: 42px;
 }
 
 .iconBtn {

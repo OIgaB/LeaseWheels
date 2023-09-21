@@ -44,12 +44,15 @@ const Sidebar = () => {
   const [mileageValueTo, setMileageValueTo] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
 
+//-----------------------------Dropdown-------------------------------------
+// const handleDropdownClick = (e) => {
+//   console.log(e.target)
+// }
 //-----------------------------Car brand------------------------------------
 
   const filteredOptions = uniqueBrands.filter((option) =>
     option.toLowerCase().includes(selectedBrand.toLowerCase())
   );
-
 
   const handleBrandOptionSelect = (option) => {
     setSelectedBrand(option); 
@@ -120,7 +123,6 @@ useEffect(() => {
       mileageFrom: mileageValueFrom, 
       mileageTo: mileageValueTo, 
     };
-    // console.log(filterData);
 
     dispatch(getFilterData(filterData));
   };
@@ -173,7 +175,7 @@ useEffect(() => {
                </button>
 
              {isOpenBrands && (
-               <ul className={`${scss.dropdown} ${scss.bransList}`}>
+               <ul className={`${scss.dropdown} ${scss.bransList}`} /*onClick={handleDropdownClick}*/>
                  {filteredOptions.map((option) => (
                    <li key={option} onClick={() => handleBrandOptionSelect(option)} className={`${scss.listItem} ${scss.brandslistItem}`}>
                      {option}
@@ -224,20 +226,22 @@ useEffect(() => {
                  type="text" 
                  id='mileage'
                  name="mileageFrom" 
-                 placeholder="From"
+                //  placeholder="From"
                  value={mileageValueFromUI} 
                  onChange={hadleMileageValueFromChange} 
                  className={`${scss.input} ${scss.customMileageInputLeft}`}
                />
+               <span className={`${scss.inputStaticText} ${scss.inputStaticText__left}`}>From</span>
                <input 
                  type="text" 
                  id='mileage'
                  name="mileageTo" 
-                 placeholder="To"
+                //  placeholder="To"
                  value={mileageValueToUI} 
                  onChange={hadleMileageValueToChange} 
                  className={`${scss.input} ${scss.customMileageInputRight}`}
                />             
+               <span className={`${scss.inputStaticText} ${scss.inputStaticText__right}`}>To</span>
              </div> 
              {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}   
            </div>    
