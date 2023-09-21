@@ -13,7 +13,7 @@ const Dashboard = () => {
 
     const [carsPerPage, setCarsPerPage] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
-    // const [notificationVisible, setNotificationVisible] = useState(false);
+    const [notificationVisible, setNotificationVisible] = useState(false);
 
     useEffect(() => {
         dispatch(getCarsPerPage(currentPage)); // fetch 8 cars
@@ -41,7 +41,7 @@ const Dashboard = () => {
           window.scrollBy({
             top: 510,
             behavior: 'smooth',
-        });
+          });
         }, 150);
     }
     
@@ -63,7 +63,7 @@ const Dashboard = () => {
             return true;
           });
         } else {
-          return [];
+            return [];
         }
       }, [allCars, brand, price, mileageFrom, mileageTo]);
 
@@ -72,6 +72,14 @@ const Dashboard = () => {
         filteredCars = [];
     }  
 
+    useEffect(() => {
+        if ((brand !== '' || price !== '' || mileageFrom !== '' || mileageTo !== '') && filteredCars.length === 0) {
+          setNotificationVisible(true);
+          if ((brand === undefined && price === undefined && mileageFrom === undefined && mileageTo === undefined) && filteredCars.length === 0) {
+            setNotificationVisible(false);
+          }
+        }
+    }, [brand, price, mileageFrom, mileageTo, filteredCars]);
 
     return (          
         <> 
@@ -80,32 +88,35 @@ const Dashboard = () => {
             {filteredCars.length > 0 ? (
                 <ul className={scss.dashbordList}>
                     {filteredCars.map((car) => (
-                    <Card key={car.id} car={car} />
+                        <Card key={car.id} car={car} />
                     ))}
                 </ul>
                 ) : (
-                //     notificationVisible ? (
-                //         <p className={scss.noData}>No matches found.</p>
-                // ) : (
-                    carsPerPage.length > 0 && (
-                        <ul className={scss.dashbordList}>
-                            {carsPerPage.map((car) => (
-                                <Card key={car.id} car={car} />
-                            ))}
-                        </ul>
+                    notificationVisible ? (
+                        <p className={scss.noData}>No matches found.</p>
+                    ) : (
+                        carsPerPage.length > 0 && (
+                            <ul className={scss.dashbordList}>
+                                {carsPerPage.map((car) => (
+                                    <Card key={car.id} car={car} />
+                                ))}
+                            </ul>
+                        )
                     )
-                // )
-            )}    
-            {(filteredCars.length === 0 && carsPerPage.length > 0 && currentPage !== 4 /*&& !notificationVisible*/) && 
+                )
+            }    
+            {(filteredCars.length === 0 && carsPerPage.length > 0 && currentPage !== 4 && !notificationVisible) && 
                 <button 
                     type="button" 
                     onClick={() => setCurrentPage((prevPage) => prevPage + 1)} 
                     className={scss.loadMoreBtn}
                 >
-                Load more
+                    Load more
                 </button>
             } 
-            {filteredCars.length === 0 && currentPage === 4 && <p className={scss.noData}>You've reached the end of search results.</p>} 
+            {filteredCars.length === 0 && currentPage === 4 && 
+                <p className={scss.noData}>You've reached the end of search results.</p>
+            } 
         </div>
         </>   
     );
