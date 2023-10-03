@@ -138,18 +138,12 @@ useEffect(() => {
 
     return (
       <div className={scss.sidebarContainer}> 
-        <button
-            type="button"
-            className={`${scss.sidebarIcon} ${scss.sidebarIconLeftBtn}`}
-            aria-label="arrow-left"
-        >
+        <NavLink to="/" className={`${scss.sidebarIcon} ${scss.sidebarIconLeftBtn}`}>
           Home
-          <NavLink to="/">
-            <svg width="45" height="45">
-                <use href={SvgSprite + '#icon-arrow-left'} />
-            </svg>            
-          </NavLink>
-        </button>      
+          <svg width="45" height="45">
+            <use href={SvgSprite + '#icon-arrow-left'} />
+          </svg>            
+        </NavLink>
 
         <form onSubmit={handleFormSearch} className={scss.sidebarForm}>
            <div className={scss.inputContainer}>
@@ -253,18 +247,13 @@ useEffect(() => {
                 <use href={SvgSprite + '#icon-reset'} />
             </svg>
         </button>
-         <button
-            type="button"
-            className={`${scss.sidebarIcon} ${scss.sidebarIconRightBtn}`}
-            aria-label="arrow-left"
-        >
-          <NavLink to="/favorites">
-            <svg width="45" height="45">
-                <use href={SvgSprite + '#icon-arrow-right'} />
-            </svg>
-          </NavLink>
+
+        <NavLink to="/favorites" className={`${scss.sidebarIcon} ${scss.sidebarIconRightBtn}`}>
+          <svg width="45" height="45">
+            <use href={SvgSprite + '#icon-arrow-right'} />
+          </svg>
           Favorite
-        </button>        
+        </NavLink>       
     </div>
   );
 };

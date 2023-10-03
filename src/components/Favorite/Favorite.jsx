@@ -5,7 +5,7 @@ import { Card } from '../Card';
 
 const Favorite = () => {
     const { favoriteCars} = useCars();
-
+    // console.log()
     return (
         <div className={scss.dashbordContainer}>
             <div className={scss.dashbordBlank}></div>

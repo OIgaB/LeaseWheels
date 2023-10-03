@@ -1,8 +1,8 @@
 .homeContainer {
     position: relative;
     height: 100vh; 
-    background-color: #4b0a0a;
-    background-image: url('https://res.cloudinary.com/ditdqzoio/image/upload/v1687252635/cars/volvo_xc60.webp'); 
+    background-color: #013336;
+    background-image: url('https://res.cloudinary.com/dp9pimwin/image/upload/v1696290005/samples/cars/up2ugiokcntmukcihygb.jpg'); 
     background-size: cover;
     background-position: center;
 }
@@ -26,7 +26,7 @@
 }
 
 .homeTitle {
-    font-size: 3rem;
+    font-size: 2.7rem;
     margin-bottom: 20px;
 }
 
@@ -56,7 +56,7 @@
 .homeAdvantages {
     width: 70px;
     height: 370px;
-    background: linear-gradient(to bottom, #4b0a0a, rgba(0, 255, 0, 0));
+    background: linear-gradient(to bottom, #0599be, rgba(0, 255, 0, 0));
     padding: 20px;
     margin: 20px;
     border-radius: 5px;
@@ -66,7 +66,6 @@
     display: flex;
     width: 700px;
     height: 30px;
-    // background-color: #4b0a0a; 
     margin-bottom: 20px;
     align-items: center;
 }
