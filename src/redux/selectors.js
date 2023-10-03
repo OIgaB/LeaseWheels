@@ -6,6 +6,7 @@ export const selectError = state => state.cars.error;
 
 export const selectFavoriteCars = state => state.favorite.favoriteCars;
 
+export const selectFilterLocation = state => state.filter.filterLocation;
 export const selectBrand = state => state.filter.brand;
 export const selectPrice = state => state.filter.price;
 export const selectMileageFrom = state => state.filter.mileageFrom;

@@ -120,6 +120,7 @@ useEffect(() => {
     e.preventDefault();
 
     const filterData = {
+      filterLocation: location.pathname,
       brand: selectedBrand, 
       price: selectedPrice,  
       mileageFrom: mileageValueFrom, 
@@ -253,14 +254,14 @@ useEffect(() => {
         </button>
 
         {rightArrow() ? (
-          <NavLink to="/favorites" className={`${scss.sidebarIcon} ${scss.sidebarIconRightBtn}`}>
+          <NavLink to="/favorites" onClick={handleReset} className={`${scss.sidebarIcon} ${scss.sidebarIconRightBtn}`}>
             <svg width="45" height="45">
               <use href={SvgSprite + '#icon-arrow-right'} />
             </svg>
             Favorite
           </NavLink>   
         ) : (
-          <NavLink to="/catalogue" className={`${scss.sidebarIcon} ${scss.sidebarIconRightBtn}`}>
+          <NavLink to="/catalogue" onClick={handleReset} className={`${scss.sidebarIcon} ${scss.sidebarIconRightBtn}`}>
             <svg width="45" height="45">
               <use href={SvgSprite + '#icon-arrow-left'} />
             </svg>

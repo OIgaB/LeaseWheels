@@ -9,7 +9,8 @@ import {
     selectBrand,
     selectPrice,
     selectMileageFrom,
-    selectMileageTo
+    selectMileageTo,
+    selectFilterLocation
 } from '../../redux/selectors';
 
 export const useCars = () => {
@@ -18,6 +19,7 @@ export const useCars = () => {
   const carById = useSelector(selectCarById);
   const isLoading = useSelector(selectisLoading);
   const error = useSelector(selectError);
+  const filterLocation = useSelector(selectFilterLocation);
   const favoriteCars = useSelector(selectFavoriteCars);
   const brand = useSelector(selectBrand);
   const price = useSelector(selectPrice);
@@ -30,6 +32,7 @@ export const useCars = () => {
     carById,
     isLoading,
     error,
+    filterLocation,
     favoriteCars,
     brand,
     price,
