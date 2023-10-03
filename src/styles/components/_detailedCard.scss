@@ -20,7 +20,7 @@
 }
 
 .cardMetaWrapper {
-    height: 250px;
+    height: 240px;
     overflow-y: auto;
     overflow-x: hidden;
 }
@@ -72,7 +72,7 @@
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
-    margin-bottom: 24px;
+    margin-bottom: 14px;
 }
 
 .cardConditions {
@@ -92,10 +92,11 @@
 }
 
 .rentalCarBtn {
+    margin-top: 14px;
     width: 168px;
     height: 44px;
     font-family: map-get($fonts, sb), sans-serif;
-    font-size: 14px;
+    font-size: 10px;
     line-height: 20px;
     color: #FFFFFF;
     border-color: transparent;
