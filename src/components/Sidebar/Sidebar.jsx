@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useDispatch } from "react-redux";
+import { useLocation } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
 import { getAllCars, getCarsPerPage } from "../../redux/carsOperations";
 import { useCars } from '../hooks/index';
@@ -10,6 +11,7 @@ import SvgSprite from '../../images/sprite.svg';
 
 const Sidebar = () => {
   const dispatch = useDispatch();
+  const location = useLocation();
   const { allCars } = useCars();
 
   useEffect(() => {
@@ -136,6 +138,10 @@ useEffect(() => {
     setMileageValueToUI('');
   }
 
+  const rightArrow = () => {
+    return location.pathname !== '/favorites';
+  };
+
     return (
       <div className={scss.sidebarContainer}> 
         <NavLink to="/" className={`${scss.sidebarIcon} ${scss.sidebarIconLeftBtn}`}>
@@ -220,7 +226,6 @@ useEffect(() => {
                  type="text" 
                  id='mileage'
                  name="mileageFrom" 
-                //  placeholder="From"
                  value={mileageValueFromUI} 
                  onChange={hadleMileageValueFromChange} 
                  className={`${scss.input} ${scss.customMileageInputLeft}`}
@@ -230,7 +235,6 @@ useEffect(() => {
                  type="text" 
                  id='mileage'
                  name="mileageTo" 
-                //  placeholder="To"
                  value={mileageValueToUI} 
                  onChange={hadleMileageValueToChange} 
                  className={`${scss.input} ${scss.customMileageInputRight}`}
@@ -248,12 +252,21 @@ useEffect(() => {
             </svg>
         </button>
 
-        <NavLink to="/favorites" className={`${scss.sidebarIcon} ${scss.sidebarIconRightBtn}`}>
-          <svg width="45" height="45">
-            <use href={SvgSprite + '#icon-arrow-right'} />
-          </svg>
-          Favorite
-        </NavLink>       
+        {rightArrow() ? (
+          <NavLink to="/favorites" className={`${scss.sidebarIcon} ${scss.sidebarIconRightBtn}`}>
+            <svg width="45" height="45">
+              <use href={SvgSprite + '#icon-arrow-right'} />
+            </svg>
+            Favorite
+          </NavLink>   
+        ) : (
+          <NavLink to="/catalogue" className={`${scss.sidebarIcon} ${scss.sidebarIconRightBtn}`}>
+            <svg width="45" height="45">
+              <use href={SvgSprite + '#icon-arrow-left'} />
+            </svg>
+            Catalogue
+          </NavLink>    
+        )}    
     </div>
   );
 };
