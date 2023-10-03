@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/LeaseWheels/static/css/main.afe09c15.css",
+    "main.css": "/LeaseWheels/static/css/main.556fcf83.css",
     "main.js": "/LeaseWheels/static/js/main.c16fc29f.js",
     "static/js/752.2e2015c4.chunk.js": "/LeaseWheels/static/js/752.2e2015c4.chunk.js",
     "static/js/999.15c0150f.chunk.js": "/LeaseWheels/static/js/999.15c0150f.chunk.js",
@@ -12,7 +12,7 @@
     "static/media/Manrope-Medium.woff2": "/LeaseWheels/static/media/Manrope-Medium.0b33f41eb1974d58060a.woff2",
     "static/media/sprite.svg": "/LeaseWheels/static/media/sprite.6fc6b1cf0816b8ffbd2898ca9f832139.svg",
     "index.html": "/LeaseWheels/index.html",
-    "main.afe09c15.css.map": "/LeaseWheels/static/css/main.afe09c15.css.map",
+    "main.556fcf83.css.map": "/LeaseWheels/static/css/main.556fcf83.css.map",
     "main.c16fc29f.js.map": "/LeaseWheels/static/js/main.c16fc29f.js.map",
     "752.2e2015c4.chunk.js.map": "/LeaseWheels/static/js/752.2e2015c4.chunk.js.map",
     "999.15c0150f.chunk.js.map": "/LeaseWheels/static/js/999.15c0150f.chunk.js.map",
@@ -20,7 +20,7 @@
     "520.ff285eac.chunk.js.map": "/LeaseWheels/static/js/520.ff285eac.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.afe09c15.css",
+    "static/css/main.556fcf83.css",
     "static/js/main.c16fc29f.js"
   ]
 }
